@@ -162,6 +162,18 @@ angular.module('mm.core.login')
     };
 
     /**
+     * Get fixed sites.
+     *
+     * @module mm.core.login
+     * @ngdoc method
+     * @name $mmLoginHelper#getFixedSites
+     * @return {Object[]} List of fixed sites.
+     */
+    self.getFixedSites = function() {
+        return mmCoreConfigConstants.siteurl;
+    };
+
+    /**
      * Get the valid identity providers from a site config.
      *
      * @module mm.core.login
@@ -194,9 +206,11 @@ angular.module('mm.core.login')
      * @return {Promise} Promise resolved when the state changes.
      */
     self.goToAddSite = function() {
-        if (mmCoreConfigConstants.siteurl) {
+        if (self.isFixedUrlSet()) {
             // Fixed URL is set, go to credentials page.
-            return $state.go('mm_login.credentials', {siteurl: mmCoreConfigConstants.siteurl});
+            var url = typeof mmCoreConfigConstants.siteurl == 'string' ?
+                    mmCoreConfigConstants.siteurl : mmCoreConfigConstants.siteurl[0].url;
+            return $state.go('mm_login.credentials', {siteurl: url});
         } else {
             return $state.go('mm_login.site');
         }
@@ -262,6 +276,19 @@ angular.module('mm.core.login')
     };
 
     /**
+     * Check if the app is configured to use several fixed URLs.
+     *
+     * @module mm.core.login
+     * @ngdoc method
+     * @name $mmLoginHelper#hasSeveralFixedSites
+     * @return {Boolean} Whether there are several fixed URLs.
+     */
+    self.hasSeveralFixedSites = function() {
+        return mmCoreConfigConstants.siteurl && angular.isArray(mmCoreConfigConstants.siteurl) &&
+                mmCoreConfigConstants.siteurl.length > 1;
+    };
+
+    /**
      * Given a site public config, check if email signup is disabled.
      *
      * @module mm.core.login
@@ -281,7 +308,7 @@ angular.module('mm.core.login')
     };
 
     /**
-     * Check if the app is configured to use a fixed URL.
+     * Check if the app is configured to use a fixed URL (only 1).
      *
      * @module mm.core.login
      * @ngdoc method
@@ -289,7 +316,8 @@ angular.module('mm.core.login')
      * @return {Boolean} True if set, false otherwise.
      */
     self.isFixedUrlSet = function() {
-        return !!mmCoreConfigConstants.siteurl;
+        return mmCoreConfigConstants.siteurl &&
+                (typeof mmCoreConfigConstants.siteurl == 'string' || mmCoreConfigConstants.siteurl.length == 1);
     };
 
     /**

@@ -1,6 +1,10 @@
 This files describes API changes in the Moodle Mobile app,
 information provided here is intended especially for developers.
 
+=== 3.4 ===
+
+ * Now the "siteurl" in config.json accepts an array of sites. Each site must have "url" and "name".
+
 === 3.3.2 ===
 
  * Handlers registered in $mmFileUploaderDelegate now need to implement a function getSupportedMimeTypes. This function will receive a list of mimetypes and needs to return the ones supported by the handler. Also, the handler's action and afterRender functions now receive a new parameter: mimetypes.
