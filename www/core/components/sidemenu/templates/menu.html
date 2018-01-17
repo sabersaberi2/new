@@ -28,7 +28,7 @@
         </header>
         <ion-content class="has-side-menu-header mm-sidemenu-menu">
             <nav>
-                <ul class="list">
+                <ul class="list dark">
                     <li class="item text-center" ng-if="(!handlers || !handlers.length) && !areNavHandlersLoaded()">
                         <ion-spinner></ion-spinner>
                     </li>
@@ -39,7 +39,7 @@
                             <ion-spinner ng-if="loading" class="icon"></ion-spinner>
                         </a>
                     </li>
-                    <li ng-repeat="item in customItems track by $index" class="mm-sidemenu-customitem" ng-if="item">
+                    <li ng-repeat="item in customItems" class="mm-sidemenu-customitem">
                         <a ng-if="item.type != 'embedded'" menu-close class="item item-icon-left" ng-href="{{item.url}}" mm-link in-app="{{item.type == 'inappbrowser'}}" capture-link="{{item.type == 'app'}}" title="{{item.label}}">
                             <i class="icon {{item.icon}}"></i>{{item.label}}
                         </a>
@@ -61,11 +61,6 @@
                     <li>
                         <a menu-close class="item item-icon-left" ui-sref="site.mm_settings" title="{{ 'mm.sidemenu.appsettings' | translate}}">
                             <i class="icon ion-gear-b"></i>{{ 'mm.sidemenu.appsettings' | translate}}
-                        </a>
-                    </li>
-                    <li>
-                        <a menu-close class="item item-icon-left" ui-sref="site.mm_onlineTV">
-                            <i class="icon ion-network"></i>OnlineTV
                         </a>
                     </li>
                     <li>

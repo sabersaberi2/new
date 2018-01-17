@@ -43,8 +43,7 @@ angular.module('mm.core')
  * @param {String} [component]      Component the downloaded files will be linked to.
  * @param {Mixed} [componentId]     Component ID the downloaded files will be linked to.
  * @param {Boolean} [allowOffline]  True to allow selecting files in offline.
- * @param {String} [acceptedTypes]  List of supported filetypes. If undefined, all types supported.
- * @param {String} [mimetypes]      List of supported mimetypes. Deprecated, use acceptedTypes instead.
+ * @param {String[]} [mimetypes]    List of supported mimetypes. If undefined, all mimetypes supported.
  */
 .directive('mmAttachments', function($mmText, $translate, $ionicScrollDelegate, $mmUtil, $mmApp, $mmFileUploaderHelper, $q) {
     return {
@@ -58,8 +57,7 @@ angular.module('mm.core')
             component: '@?',
             componentId: '@?',
             allowOffline: '@?',
-            acceptedTypes: '=?',
-            mimetypes: '=?',
+            mimetypes: '=?'
         },
         link: function(scope) {
             var allowOffline = scope.allowOffline && scope.allowOffline !== 'false';
@@ -77,16 +75,11 @@ angular.module('mm.core')
                 scope.unlimitedFiles = true;
             }
 
-            if (scope.acceptedTypes && scope.acceptedTypes.trim()) {
-                scope.filetypes = $mmFileUploaderHelper.prepareFiletypeList(scope.acceptedTypes);
-            }
-
             scope.add = function() {
                 if (!allowOffline && !$mmApp.isOnline()) {
                     $mmUtil.showErrorModal('mm.fileuploader.errormustbeonlinetoupload', true);
                 } else {
-                    var mimetypes = scope.filetypes && scope.filetypes.mimetypes || scope.mimetypes;
-                    return $mmFileUploaderHelper.selectFile(maxSize, allowOffline, undefined, undefined, mimetypes)
+                    return $mmFileUploaderHelper.selectFile(maxSize, allowOffline, undefined, undefined, scope.mimetypes)
                             .then(function(result) {
                         scope.files.push(result);
                     });

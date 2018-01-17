@@ -50,8 +50,7 @@ angular.module('mm.addons.calendar')
             'course': calendarImgPath + 'courseevent.svg',
             'group': calendarImgPath + 'groupevent.svg',
             'site': calendarImgPath + 'siteevent.svg',
-            'user': calendarImgPath + 'userevent.svg',
-            'category': calendarImgPath + 'categoryevent.svg'
+            'user': calendarImgPath + 'userevent.svg'
         };
 
     /**
@@ -190,19 +189,9 @@ angular.module('mm.addons.calendar')
             presets.getFromCache = false;
         }
         return $mmSite.read('core_calendar_get_calendar_events', data, presets).then(function(response) {
-            // The WebService returns all category events. Check the response to search for the event we want.
-            var event;
-
-            for (var i in response.events) {
-                var e = response.events[i];
-                if (e.id == id) {
-                    event = e;
-                    break;
-                }
-            }
-
-            if (event) {
-                return event;
+            var e = response.events[0];
+            if (e) {
+                return e;
             } else {
                 return self.getEventFromLocalDb(id);
             }

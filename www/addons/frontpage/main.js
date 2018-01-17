@@ -16,7 +16,7 @@ angular.module('mm.addons.frontpage', [])
 
 .constant('mmaFrontpagePriority', 1000)
 
-.config(function($stateProvider) {
+.config(function($stateProvider, $mmCoursesDelegateProvider, mmCoreCoursePriority) {
 
     $stateProvider
 

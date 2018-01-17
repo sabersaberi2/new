@@ -1,5 +1,5 @@
 {
-    "future": "Próximos 30 dias",
+    "future": "Futuro",
     "inprogress": "Em progresso",
     "morecourses": "Mais disciplinas",
     "next30days": "Próximos 30 dias",
@@ -10,7 +10,7 @@
     "nocoursespast": "Nenhuma disciplina terminada",
     "noevents": "Nenhuma atividade programada",
     "past": "Passado",
-    "pluginname": "Visão geral",
+    "pluginname": "Vista geral",
     "recentlyoverdue": "Terminadas recentemente",
     "sortbycourses": "Ordenar por disciplinas",
     "sortbydates": "Ordenar por datas",

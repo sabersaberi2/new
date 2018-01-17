@@ -78,15 +78,7 @@ angular.module('mm.addons.mod_resource')
         }
 
         return promise.then(function(dirPath) {
-            var promises = [];
-
-            promises.push(self.downloadOrPrefetch(module, courseId, prefetch, dirPath));
-
-            if ($mmaModResource.isGetResourceWSAvailable()) {
-                promises.push($mmaModResource.getResourceData(courseId, module.id));
-            }
-
-            return $q.all(promises);
+            return self.downloadOrPrefetch(module, courseId, prefetch, dirPath);
         });
     }
 

@@ -80,9 +80,4 @@ angular.module('mm.core.sidemenu')
             updateSiteObserver.off();
         }
     });
-
-    
-    
-    
-    
 });

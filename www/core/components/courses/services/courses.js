@@ -70,56 +70,6 @@ angular.module('mm.core.courses')
     }
 
     /**
-     * Given a list of course IDs to get course options, return the list of courseIds to use.
-     *
-     * @param  {Number[]} courseIds Course IDs.
-     * @param  {String} [siteId]    Site Id. If not defined, use current site.
-     * @return {Promise}            Promise resolved with the list of course IDs.
-     */
-    function getCourseIdsForOptions(courseIds, siteId) {
-        return $mmSitesManager.getSite(siteId).then(function(site) {
-            var siteHomeId = site.getSiteHomeId();
-
-            if (courseIds.length == 1) {
-                // Only 1 course, check if it belongs to the user courses. If so, use all user courses.
-                return self.getUserCourses(true, siteId).then(function(courses) {
-                    var courseId = courseIds[0],
-                        useAllCourses = false;
-
-                    if (courseId == siteHomeId) {
-                        // It's site home, use all courses.
-                        useAllCourses = true;
-                    } else {
-                        for (var i = 0; i < courses.length; i++) {
-                            if (courses[i].id == courseId) {
-                                useAllCourses = true;
-                                break;
-                            }
-                        }
-                    }
-
-                    if (useAllCourses) {
-                        // User is enrolled, retrieve all the courses.
-                        courseIds = courses.map(function(course) {
-                            return course.id;
-                        });
-
-                        // Always add the site home ID.
-                        courseIds.push(siteHomeId);
-                    }
-
-                    return courseIds;
-                }).catch(function() {
-                    // Ignore errors.
-                    return courseIds;
-                });
-            } else {
-                return courseIds;
-            }
-        });
-    }
-
-    /**
      * Check if get cateogries WS is available.
      *
      * @module mm.core.courses
@@ -437,10 +387,13 @@ angular.module('mm.core.courses')
             navOptions,
             admOptions;
 
-        // Get the list of courseIds to use based on the param.
-        return getCourseIdsForOptions(courseIds, siteId).then(function(courseIds) {
+        return $mmSitesManager.getSite(siteId).then(function(site) {
+            // Add always the site id course.
+            courseIds.push(site.getSiteHomeId());
 
-            // Get user navigation and administration options.
+            siteId = siteId || site.getId();
+
+            // Get user navigation and administration options to speed up handlers loading.
             promises.push(self.getUserNavigationOptions(courseIds, siteId).catch(function() {
                 // Couldn't get it, return empty options.
                 return {};
@@ -710,27 +663,6 @@ angular.module('mm.core.courses')
     };
 
     /**
-     * Invalidates the navigation and administration options for the given courses.
-     *
-     * @module mm.core.courses
-     * @ngdoc method
-     * @name $mmCourses#invalidateCoursesOptions
-     * @param  {Number[]} courseIds IDs of courses to get.
-     * @param  {String} [siteId]    Site ID to invalidate. If not defined, use current site.
-     * @return {Promise}            Promise resolved when the data is invalidated.
-     */
-    self.invalidateCoursesOptions = function(courseIds, siteId) {
-        return getCourseIdsForOptions(courseIds, siteId).then(function(ids) {
-            var promises = [];
-
-            promises.push(self.invalidateUserAdministrationOptionsForCourses(ids, siteId));
-            promises.push(self.invalidateUserNavigationOptionsForCourses(ids, siteId));
-
-            return $q.all(promises);
-        });
-    };
-
-    /**
      * Invalidates get courses WS call.
      *
      * @module mm.core.courses
@@ -940,8 +872,7 @@ angular.module('mm.core.courses')
                 } else if (response.warnings && response.warnings.length) {
                     var message;
                     angular.forEach(response.warnings, function(warning) {
-                        // Invalid password warnings.
-                        if (warning.warningcode == '2' || warning.warningcode == '3' || warning.warningcode == '4') {
+                        if (warning.warningcode == '2' || warning.warningcode == '4') { // Invalid password warnings.
                             message = warning.message;
                         }
                     });

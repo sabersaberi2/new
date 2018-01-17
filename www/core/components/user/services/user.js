@@ -117,30 +117,36 @@ angular.module('mm.core.user')
      * @module mm.core.user
      * @ngdoc method
      * @name $mmUser#getProfile
-     * @param  {Number} userId      User's ID.
-     * @param  {Number} [courseId]  Course ID to get course profile, undefined or 0 to get site profile.
+     * @param  {Number} userid      User's ID.
+     * @param  {Number} [courseid]  Course ID to get course profile, undefined or 0 to get site profile.
      * @param  {Boolean} forceLocal True to retrieve the user data from local DB, false to retrieve it from WS.
      * @return {Promise}            Promise resolved with the user data.
      */
-    self.getProfile = function(userId, courseId, forceLocal) {
+    self.getProfile = function(userid, courseid, forceLocal) {
+
+        var deferred = $q.defer();
+
         if (forceLocal) {
-            return self.getUserFromLocal(userId).catch(function() {
-                return self.getUserFromWS(userId, courseId);
+            self.getUserFromLocal(userid).then(deferred.resolve, function() {
+                self.getUserFromWS(userid, courseid).then(deferred.resolve, deferred.reject);
+            });
+        } else {
+            self.getUserFromWS(userid, courseid).then(deferred.resolve, function() {
+                self.getUserFromLocal(userid).then(deferred.resolve, deferred.reject);
             });
         }
-        return self.getUserFromWS(userId, courseId).catch(function() {
-            return self.getUserFromLocal(userId);
-        });
+
+        return deferred.promise;
     };
 
     /**
      * Invalidates user WS calls.
      *
-     * @param  {Number} userId User ID.
+     * @param  {Number} userid User ID.
      * @return {String}        Cache key.
      */
-    function getUserCacheKey(userId) {
-        return 'mmUser:data:' + userId;
+    function getUserCacheKey(userid) {
+        return 'mmUser:data:'+userid;
     }
 
     /**
@@ -172,7 +178,7 @@ angular.module('mm.core.user')
      * @module mm.core.user
      * @ngdoc method
      * @name $mmUser#getUserFromWS
-     * @param  {Number} userid         User ID.
+     * @param  {Number} id         User ID.
      * @param  {Number} [courseid] Course ID to get course profile, undefined or 0 to get site profile.
      * @return {Promise}           Promise resolve when the user is retrieved.
      */
@@ -212,7 +218,7 @@ angular.module('mm.core.user')
 
         return $mmSite.read(wsName, data, preSets).then(function(users) {
             if (users.length == 0) {
-                return $q.reject('Cannot retrieve user info.');
+                return $q.reject();
             }
 
             var user = users.shift();
@@ -284,9 +290,7 @@ angular.module('mm.core.user')
             promises = [];
 
         angular.forEach(userIds, function(userId) {
-            userId = parseInt(userId, 10);
-            // Prevent repeats and errors.
-            if (!isNaN(userId) && !treated[userId]) {
+            if (!treated[userId]) {
                 treated[userId] = true;
 
                 promises.push(self.getProfile(userId, courseId).then(function(profile) {

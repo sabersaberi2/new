@@ -33,22 +33,15 @@ angular.module('mm.addons.mod_url')
     $scope.canGetUrl = $mmaModUrl.isGetUrlWSAvailable();
 
     function fetchContent() {
-        var canGetUrl = $scope.canGetUrl;
-
         // Fetch the module data.
         var promise;
-        if (canGetUrl) {
+        if ($scope.canGetUrl) {
             promise = $mmaModUrl.getUrl(courseId, module.id);
         } else {
-            promise = $q.reject();
+            promise = $mmCourse.getModule(module.id, courseId);
         }
-
-        return promise.catch(function() {
-            canGetUrl = false;
-            // Fallback in case is not prefetch or not avalaible.
-            return $mmCourse.getModule(module.id, courseId);
-        }).then(function(mod) {
-            if (!canGetUrl) {
+        return promise.then(function(mod) {
+            if (!$scope.canGetUrl) {
                 if (!mod.contents.length) {
                     // If the data was cached maybe we don't have contents. Reject.
                     return $q.reject();
@@ -58,7 +51,7 @@ angular.module('mm.addons.mod_url')
             $scope.title = mod.name;
             $scope.description = mod.intro || mod.description;
 
-            $scope.url = canGetUrl ? mod.externalurl :
+            $scope.url = $scope.canGetUrl ? mod.externalurl : 
                             ((mod.contents[0] && mod.contents[0].fileurl) ? mod.contents[0].fileurl : undefined);
         }).catch(function(error) {
             $mmUtil.showErrorModalDefault(error, 'mm.course.errorgetmodule', true);

@@ -28,6 +28,3 @@ angular.module('mm', ['ionic', 'ngCordova', 'angular-md5', 'pascalprecht.transla
         }
     });
 });
-
-
-

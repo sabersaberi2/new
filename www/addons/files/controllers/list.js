@@ -14,45 +14,26 @@
 
 angular.module('mm.addons.files')
 
-.controller('mmaFilesListController', function($q, $scope, $stateParams, $mmaFiles, $mmSite, $translate, $mmUtil, $mmText,
+.controller('mmaFilesListController', function($q, $scope, $stateParams, $mmaFiles, $mmSite, $translate, $mmUtil,
         $mmaFilesHelper, $mmApp, mmaFilesMyComponent, mmaFilesSiteComponent) {
 
     var path = $stateParams.path,
         root = $stateParams.root,
-        isMyFiles = root === 'my',
-        isSiteFiles = root === 'site',
-        userQuota = $mmSite.getInfo().userquota,
         promise;
 
     // We're loading the files.
     $scope.count = -1;
-    $scope.component = isMyFiles ? mmaFilesMyComponent : mmaFilesSiteComponent;
-    $scope.showUpload = isMyFiles && !path && $mmSite.canUploadFiles() && !$mmaFiles.isUploadDisabledInSite();
+    $scope.component = root === 'my' ? mmaFilesMyComponent : mmaFilesSiteComponent;
 
     // Convenience function that fetches the files and updates the scope.
-    function fetchFiles() {
+    function fetchFiles(root, path) {
         if (!path) {
             // The path is unknown, the user must be requesting a root.
-            if (isSiteFiles) {
+            if (root === 'site') {
                 promise = $mmaFiles.getSiteFiles();
                 $scope.title = $translate.instant('mma.files.sitefiles');
-            } else if (isMyFiles) {
-                promise = $mmaFiles.getMyFiles().then(function(files) {
-                    if ($scope.showUpload && $mmaFiles.canGetPrivateFilesInfo() && userQuota > 0) {
-                        // Get the info to calculate the available size.
-                        return $mmaFiles.getPrivateFilesInfo().then(function(info) {
-                            $scope.filesInfo = info;
-                            $scope.spaceUsed = $mmText.bytesToSize(info.filesizewithoutreferences, 1);
-                            $scope.userQuota = $mmText.bytesToSize(userQuota, 1);
-
-                            return files;
-                        });
-                    } else {
-                        delete $scope.userQuota;
-                    }
-
-                    return files;
-                });
+            } else if (root === 'my') {
+                promise = $mmaFiles.getMyFiles();
                 $scope.title = $translate.instant('mma.files.files');
             } else {
                 // Upon error we create a fake promise that is rejected.
@@ -76,17 +57,12 @@ angular.module('mm.addons.files')
 
     // Function to refresh files list.
     function refreshFiles() {
-        var promises = [];
-
-        promises.push($mmaFiles.invalidateDirectory(root, path));
-        promises.push($mmaFiles.invalidatePrivateFilesInfoForUser());
-
-        return $q.all(promises).finally(function() {
-            return fetchFiles();
+        return $mmaFiles.invalidateDirectory(root, path).finally(function() {
+            return fetchFiles(root, path);
         });
     }
 
-    fetchFiles().finally(function() {
+    fetchFiles(root, path).finally(function() {
         $scope.filesLoaded = true;
     });
 
@@ -96,6 +72,8 @@ angular.module('mm.addons.files')
         });
     };
 
+    $scope.showUpload = root === 'my' && !path && $mmSite.canUploadFiles() && !$mmaFiles.isUploadDisabledInSite();
+
     // When we are in the root of the private files we can add more files.
     $scope.add = function() {
         $mmaFiles.versionCanUploadFiles().then(function(canUpload) {
@@ -104,7 +82,7 @@ angular.module('mm.addons.files')
             } else if (!$mmApp.isOnline()) {
                 $mmUtil.showErrorModal('mm.fileuploader.errormustbeonlinetoupload', true);
             } else {
-                $mmaFilesHelper.selectAndUploadFile($scope.filesInfo).then(function() {
+                $mmaFilesHelper.selectAndUploadFile().then(function() {
                     $scope.filesLoaded = false;
                     refreshFiles().finally(function() {
                         $scope.filesLoaded = true;

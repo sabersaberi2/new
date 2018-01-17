@@ -170,11 +170,6 @@ p.item-text-wrap {
   width: 40%;
 }
 
-.item-avatar > img:first-child {
-  text-indent: -99999px;
-  background-color: $gray-light;
-}
-
 // Media item, ideal for icons.
 .item-media {
   @extend .item-avatar;
@@ -184,7 +179,6 @@ p.item-text-wrap {
     max-width: $item-media-width;
     max-height: $item-media-height;
     border-radius: 0;
-    background-color: transparent;
   }
   p {
     margin: 0px;
@@ -453,20 +447,6 @@ button.item.item-button-right {
   &.icon-left:before,
   &.icon-right:before {
     line-height: 28px;
-  }
-}
-
-.item-icon-right .item-note .icon {
-  display: inline;
-  align-items: normal;
-  position: relative;
-  top: auto;
-  right: auto;
-  height: auto;
-  font-size: 14px;
-  &:before {
-    display: inline;
-    width: auto;
   }
 }
 
@@ -739,13 +719,6 @@ mm-navigation-bar {
   }
 }
 
-.item-icon-left, .item-icon-right {
-  &.item-icon-top .icon {
-    align-items: flex-start;
-    top: 11px;
-  }
-}
-
 // These will need item-icon-left as well.
 @mixin mm-message-item($color) {
   border-bottom: 3px solid $color !important;
@@ -977,28 +950,6 @@ mm-timer {
     line-height: $font-size-base + 2;
     border: 0;
     position: relative;
-  }
-}
-
-.item-select.mm-full-width {
-  margin-top: ($item-input-padding / 2);
-  margin-bottom: $item-input-padding - 1;
-  border: 0;
-
-  select {
-    max-width: 100%;
-    width: 100%;
-    background: transparent;
-    text-indent: 0;
-    line-height: $font-size-base + 2;
-    border: 0;
-    position: relative;
-  }
-
-  &.select-align-left {
-    select {
-      direction: ltr;
-    }
   }
 }
 
@@ -1613,7 +1564,7 @@ i, cite, em, var, address, dfn {
   left: 0;
   right: 0;
   display: table;
-  height: 100%;
+  //height: 100%;
   width: 100%;
   z-index: -1;
   margin: 0;
@@ -1809,18 +1760,6 @@ ol.list-with-style, ul.list-with-style {
   padding-left: 40px;
 }
 
-.no-padding-bottom, .padding.no-padding-bottom {
-  padding-bottom: 0;
-}
-
-.text-success {
-  color: $mm-success-color;
-}
-
-.text-danger {
-  color: $mm-error-color;
-}
-
 .atto_image_preview {
     width: 100%;
     height: 100%;
@@ -1938,14 +1877,6 @@ ol.list-with-style, ul.list-with-style {
 
 .fa-ban:before {
     content: $ionicon-var-minus-circled;
-}
-
-.fa-remove:before {
-    content: $ionicon-var-close-round;
-}
-
-.fa-check:before {
-    content: $ionicon-var-checkmark-round;
 }
 /**
  * In this file we will reset ionic styles that can bother online html.
@@ -2243,6 +2174,210 @@ $mm-rte-min-height: 80px !default;
     margin: 0;
   }
 }
+$chart-size: 70px;
+$doughnut-border-size: 15px;
+$doughnut-dasharray: 173;
+$doughnut-empty-colour: $gray-light;
+$doughnut-fill-colour: $mm-color-light;
+$doughnut-border-colour:  $gray-dark;
+$doughnut-text-colour: $gray-darker;
+
+.item-course {
+  >.icon, >ion-spinner {
+    height: 32px + ($item-padding /2);
+    width: 32px + ($item-padding /2);
+    right: 0;
+    top: 6px;
+    color: $doughnut-text-colour;
+    position: absolute;
+  }
+}
+
+.item-progress {
+  @extend .item-avatar;
+  padding-left: $chart-size + ($item-padding * 2);
+  min-height: $chart-size + ($item-padding * 2);
+  >.progress-chart-container {
+    max-width: $chart-size;
+    max-height: $chart-size;
+    position: absolute;
+    top: $item-padding;
+    left: $item-padding;
+  }
+  h2 {
+    font-size: 21px;
+  }
+}
+
+.progress-chart-container {
+  height: $chart-size;
+  width: $chart-size;
+
+  .progress-doughnut {
+    position: relative;
+    height: $chart-size;
+    width: $chart-size;
+    background-clip: padding-box;
+    border: $doughnut-border-size solid $doughnut-empty-colour;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: table;
+
+    .progress-text {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      color: $doughnut-text-colour;
+      font-size: 95%;
+      letter-spacing: -1px;
+    }
+
+    .progress-indicator {
+      position: absolute;
+      top: ($doughnut-border-size * -1);
+      left: ($doughnut-border-size * -1);
+      height: $chart-size;
+      width: $chart-size;
+
+      svg {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        .circle {
+          stroke-width: $doughnut-border-size;
+          stroke: $doughnut-fill-colour;
+          fill: none;
+          stroke-dasharray: $doughnut-dasharray;
+          stroke-dashoffset: $doughnut-dasharray;
+          transform: rotate(-90deg);
+          transform-origin: center center;
+
+          @for $i from 1 through 100 {
+              &.percent-#{$i} {
+                  stroke-dashoffset: $doughnut-dasharray - ($i / 100 * $doughnut-dasharray);
+              }
+          }
+        }
+      }
+    }
+  }
+
+  .no-progress {
+    height: $chart-size;
+    width: $chart-size;
+    background-color: $doughnut-empty-colour;
+    border-radius: 50%;
+    position: relative;
+    border: 0.5px solid $doughnut-border-colour;
+
+    .icon {
+      position: absolute;
+      text-align: center;
+      /*rtl:ignore*/
+      left: -1px;
+      top: -1px;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      color: $white;
+      height: $chart-size;
+      width: $chart-size;
+      line-height: $chart-size;
+      font-size: ($chart-size / 2) + 10px;
+      &:before {
+        width: $chart-size;
+      }
+    }
+  }
+}
+
+.mm-site_mm_coursescategories .item-icon-left,
+mm-course-list-item .item-icon-left {
+  color: $black;
+}
+.mm-capture-media-modal {
+    background-color: $gray-light;
+
+    .bar-header {
+        @include bar-style($bar-content-bg, $bar-content-border, $bar-content-text);
+
+        .button {
+            color: $bar-content-text;
+            font-weight: normal;
+        }
+    }
+
+    .mm-capture-media-modal-content {
+        text-align: center;
+
+        .mm-av-wrapper {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: table;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            clear: both;
+        }
+
+        audio, video, img {
+            width: 100%;
+            height: 100%;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            object-fit: contain;
+
+            &.mm-webcam-stream {
+                -webkit-transform: scaleX(-1);
+                transform: scaleX(-1);
+            }
+        }
+
+        .mm-webcam-image-canvas {
+            display: none;
+        }
+
+        .mm-audio-record-container {
+            width: 100%;
+            height: 100%;
+
+            .mm-audio-canvas {
+                width: 100%;
+                height: 100%;
+            }
+
+            .mm-audio-captured {
+                width: 100%;
+            }
+        }
+    }
+
+
+    .bar-footer {
+        background-color: $gray;
+        border-top-color: $gray-dark;
+
+        .col {
+            padding: 0;
+            line-height: $bar-height - $bar-padding-portrait * 2;
+
+            .button-icon {
+                color: $black;
+            }
+
+            .ion-record, .ion-trash-a {
+                color: $red;
+            }
+        }
+    }
+}
+
 .mm-fileuploader-file-handler {
     input {
         position: absolute;
@@ -2257,23 +2392,110 @@ $mm-rte-min-height: 80px !default;
     }
 }
 
-
-.item.item-button-right .badge.mm-course-download{
-  right: $spinner-width + $item-padding;
+/* - User grades table (most of it extracted from MM1)
+-------------------------------------------------------------------------- */
+.mm-grades-container {
+  padding-right: 2px;
+  background: white;
 }
 
-.mm-course-module-handler mm-format-text + mm-format-text {
-  margin-top: 16px;
+.mm-grades-table {
+  border-collapse: collapse;
+  line-height: 20px;
+  width: 100%;
+  font-size: 16px;
+  color: $item-stable-text;
+  tr {
+    border-bottom: 1px solid $item-light-border;
+  }
+  th,
+  td {
+    text-align: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    vertical-align: top;
+    white-space: normal;
+  }
+  thead th {
+    padding-left: 10px;
+    vertical-align: bottom;
+    font-weight: bold;
+  }
+  tbody th {
+    font-weight: normal;
+  }
+  .item {
+    display: table-cell;
+  }
+  th {
+    &.b1b {
+      padding-left: 20px;
+    }
+    &.item {
+      padding-left: 30px;
+    }
+    &.baggt {
+      padding-left: 30px;
+    }
+    img {
+      margin-left: -20px;
+      float: left;
+    }
+  }
+  .b1l {
+    width: 10px;
+    min-width: 10px;
+  }
+  .b1t,
+  .baggt {
+    font-weight: bold;
+  }
+  .itemcenter {
+    @extend .item;
+    padding: 10px;
+    white-space: normal;
+  }
+  .feedbacktext {
+    padding-left: 10px;
+    .no-overflow {
+      overflow: auto;
+    }
+  }
+  .dimmed_text,
+  .hidden,
+  .hidden a {
+    color: #aaa;
+  }
+  .oddd1,
+  .oddd3,
+  .evend3,
+  .levelodd {
+    background-color: $item-divider-bg;
+  }
+  .oddd2,
+  .evend2,
+  .oddd4,
+  .evend4 {
+    background-color: $item-stable-bg;
+  }
+  .leveleven {
+    background-color: $item-light-bg;
+  }
+  .column-leader {
+    border-left: 1px solid $item-light-border;
+    border-top: 1px solid $item-light-border;
+    border-bottom: 1px solid $item-light-border;
+    &.level1 {
+      border-left: 0;
+    }
+  }
+  .column-itemname {
+    border-right: 1px solid $item-light-border;
+    border-top: 1px solid $item-light-border;
+    border-bottom: 1px solid $item-light-border;
+  }
 }
-
-mm-course-mod-description .card .item {
-  padding: $item-padding / 2;
-}
-
-.padding mm-course-mod-description .card {
-  margin-top: 0;
-}
-
 
 
 $mm-question-correct-color:         $green-dark !default;
@@ -2410,223 +2632,52 @@ li.mm-question-answer-incorrect,
   color: $mm-question-warning-color;
 }
 
-.questioncorrectnessicon {
-  font-size: 20px;
-}
-.mm-capture-media-modal {
-    background-color: $gray-light;
-
-    .bar-header {
-        @include bar-style($bar-content-bg, $bar-content-border, $bar-content-text);
-
-        .button {
-            color: $bar-content-text;
-            font-weight: normal;
-        }
-    }
-
-    .mm-capture-media-modal-content {
-        text-align: center;
-
-        .mm-av-wrapper {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: table;
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            clear: both;
-        }
-
-        audio, video, img {
-            width: 100%;
-            height: 100%;
-            display: table-cell;
-            text-align: center;
-            vertical-align: middle;
-            object-fit: contain;
-
-            &.mm-webcam-stream {
-                -webkit-transform: scaleX(-1);
-                transform: scaleX(-1);
-            }
-        }
-
-        .mm-webcam-image-canvas {
-            display: none;
-        }
-
-        .mm-audio-record-container {
-            width: 100%;
-            height: 100%;
-
-            .mm-audio-canvas {
-                width: 100%;
-                height: 100%;
-            }
-
-            .mm-audio-captured {
-                width: 100%;
-            }
-        }
-    }
-
-
-    .bar-footer {
-        background-color: $gray;
-        border-top-color: $gray-dark;
-
-        .col {
-            padding: 0;
-            line-height: $bar-height - $bar-padding-portrait * 2;
-
-            .button-icon {
-                color: $black;
-            }
-
-            .ion-record, .ion-trash-a {
-                color: $red;
-            }
-        }
-    }
-}
-
 #mm-settings-languagelabel {
   color: $base-color;
 }
 
-$chart-size: 70px;
-$doughnut-border-size: 15px;
-$doughnut-dasharray: 173;
-$doughnut-empty-colour: $gray-light;
-$doughnut-fill-colour: $mm-color-light;
-$doughnut-border-colour:  $gray-dark;
-$doughnut-text-colour: $gray-darker;
-
-.item-course {
-  >.icon, >ion-spinner {
-    height: 32px + ($item-padding /2);
-    width: 32px + ($item-padding /2);
-    right: 0;
-    top: 6px;
-    color: $doughnut-text-colour;
-    position: absolute;
+// Bar styles
+.bar-side-menu {
+  @include bar-style($bar-side-menu-color, $bar-side-menu-border-color, $bar-side-menu-text-color);
+  height: $bar-side-menu-height !important; // MOBILE-959: Added !important to fix side menu header in iOS.
+  .item {
+    background: transparent;
+    border: none;
   }
-}
-
-.item-progress {
-  @extend .item-avatar;
-  padding-left: $chart-size + ($item-padding * 2);
-  min-height: $chart-size + ($item-padding * 2);
-  >.progress-chart-container {
-    max-width: $chart-size;
-    max-height: $chart-size;
-    position: absolute;
-    top: $item-padding;
-    left: $item-padding;
-  }
-  h2 {
-    font-size: 21px;
-  }
-}
-
-.progress-chart-container {
-  height: $chart-size;
-  width: $chart-size;
-
-  .progress-doughnut {
-    position: relative;
-    height: $chart-size;
-    width: $chart-size;
-    background-clip: padding-box;
-    border: $doughnut-border-size solid $doughnut-empty-colour;
-    border-radius: 50%;
-    box-sizing: border-box;
-    display: table;
-
-    .progress-text {
-      display: table-cell;
-      text-align: center;
-      vertical-align: middle;
-      color: $doughnut-text-colour;
-      font-size: 95%;
-      letter-spacing: -1px;
-    }
-
-    .progress-indicator {
-      position: absolute;
-      top: ($doughnut-border-size * -1);
-      left: ($doughnut-border-size * -1);
-      height: $chart-size;
-      width: $chart-size;
-
-      svg {
-        position: relative;
-        height: 100%;
-        width: 100%;
-
-        .circle {
-          stroke-width: $doughnut-border-size;
-          stroke: $doughnut-fill-colour;
-          fill: none;
-          stroke-dasharray: $doughnut-dasharray;
-          stroke-dashoffset: $doughnut-dasharray;
-          transform: rotate(-90deg);
-          transform-origin: center center;
-
-          @for $i from 1 through 100 {
-              &.percent-#{$i} {
-                  stroke-dashoffset: $doughnut-dasharray - ($i / 100 * $doughnut-dasharray);
-              }
-          }
-        }
-      }
-    }
-  }
-
-  .no-progress {
-    height: $chart-size;
-    width: $chart-size;
-    background-color: $doughnut-empty-colour;
-    border-radius: 50%;
-    position: relative;
-    border: 0.5px solid $doughnut-border-colour;
-
+  .item-avatar {
+    margin-top: 0px !important; // MOBILE-959: Added to fix side menu header in iOS.
+    h2,
+    p,
     .icon {
-      position: absolute;
-      text-align: center;
-      /*rtl:ignore*/
-      left: -1px;
-      top: -1px;
-      right: 0;
-      bottom: 0;
-      margin: 0;
-      color: $white;
-      height: $chart-size;
-      width: $chart-size;
-      line-height: $chart-size;
-      font-size: ($chart-size / 2) + 10px;
-      &:before {
-        width: $chart-size;
-      }
+      color: $bar-side-menu-text-color;
     }
   }
 }
 
-.mm-site_mm_coursescategories .item-icon-left,
-mm-course-list-item .item-icon-left {
-  color: $black;
+.has-side-menu-header {
+  top: $bar-side-menu-height;
 }
 
-.mm-course-enrollment-img {
-  max-width: 20px;
-  max-height: 34px;
+.mm-sidemenu-menu {
+  .item .badge {
+    right: 16px;
+  }
 }
 
+ion-side-menu li .item,
+ion-side-menu li.item {
+  border-color: $bar-side-menu-item-border-color;
+  background-color: $bar-side-menu-item-background-color;
+  color: $bar-side-menu-item-text-color;
+
+  .icon {
+    color: $bar-side-menu-item-icon-color;
+  }
+}
+
+ion-side-menu li.item.item-divider {
+  background-color: $bar-side-menu-item-divider-color;
+}
 
 .foreground-ion-edit.ion-edit:before {
     position: relative;
@@ -2638,111 +2689,6 @@ mm-course-list-item .item-icon-left {
 .mm-site_mm_user-profile .mm-tab-handlers {
     padding-bottom: 16px;
 }
-/* - User grades table (most of it extracted from MM1)
--------------------------------------------------------------------------- */
-.mm-grades-container {
-  padding-right: 2px;
-  background: white;
-}
-
-.mm-grades-table {
-  border-collapse: collapse;
-  line-height: 20px;
-  width: 100%;
-  font-size: 16px;
-  color: $item-stable-text;
-  tr {
-    border-bottom: 1px solid $item-light-border;
-  }
-  th,
-  td {
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    vertical-align: top;
-    white-space: normal;
-  }
-  thead th {
-    padding-left: 10px;
-    vertical-align: bottom;
-    font-weight: bold;
-  }
-  tbody th {
-    font-weight: normal;
-  }
-  .item {
-    display: table-cell;
-  }
-  th {
-    &.b1b {
-      padding-left: 20px;
-    }
-    &.item {
-      padding-left: 30px;
-    }
-    &.baggt {
-      padding-left: 30px;
-    }
-    img {
-      margin-left: -20px;
-      float: left;
-    }
-  }
-  .b1l {
-    width: 10px;
-    min-width: 10px;
-  }
-  .b1t,
-  .baggt {
-    font-weight: bold;
-  }
-  .itemcenter {
-    @extend .item;
-    padding: 10px;
-    white-space: normal;
-  }
-  .feedbacktext {
-    padding-left: 10px;
-    .no-overflow {
-      overflow: auto;
-    }
-  }
-  .dimmed_text,
-  .hidden,
-  .hidden a {
-    color: #aaa;
-  }
-  .oddd1,
-  .oddd3,
-  .evend3,
-  .levelodd {
-    background-color: $item-divider-bg;
-  }
-  .oddd2,
-  .evend2,
-  .oddd4,
-  .evend4 {
-    background-color: $item-stable-bg;
-  }
-  .leveleven {
-    background-color: $item-light-bg;
-  }
-  .column-leader {
-    border-left: 1px solid $item-light-border;
-    border-top: 1px solid $item-light-border;
-    border-bottom: 1px solid $item-light-border;
-    &.level1 {
-      border-left: 0;
-    }
-  }
-  .column-itemname {
-    border-right: 1px solid $item-light-border;
-    border-top: 1px solid $item-light-border;
-    border-bottom: 1px solid $item-light-border;
-  }
-}
-
 
 .mm-mm_login_sites {
   .item-thumbnail-left .item-content {
@@ -2763,7 +2709,6 @@ mm-course-list-item .item-icon-left {
     border-radius : 50%;
     padding: 4px;
     border: 1px solid #ddd;
-    text-indent: -99999px;
   }
 }
 
@@ -2814,47 +2759,21 @@ mm-course-list-item .item-icon-left {
 }
 
 
-// Bar styles
-.bar-side-menu {
-  @include bar-style($bar-side-menu-color, $bar-side-menu-border-color, $bar-side-menu-text-color);
-  height: $bar-side-menu-height !important; // MOBILE-959: Added !important to fix side menu header in iOS.
-  .item {
-    background: transparent;
-    border: none;
-  }
-  .item-avatar {
-    margin-top: 0px !important; // MOBILE-959: Added to fix side menu header in iOS.
-    h2,
-    p,
-    .icon {
-      color: $bar-side-menu-text-color;
-    }
-  }
+
+.item.item-button-right .badge.mm-course-download{
+  right: $spinner-width + $item-padding;
 }
 
-.has-side-menu-header {
-  top: $bar-side-menu-height;
+.mm-course-module-handler mm-format-text + mm-format-text {
+  margin-top: 16px;
 }
 
-.mm-sidemenu-menu {
-  .item .badge {
-    right: 16px;
-  }
+mm-course-mod-description .card .item {
+  padding: $item-padding / 2;
 }
 
-ion-side-menu li .item,
-ion-side-menu li.item {
-  border-color: $bar-side-menu-item-border-color;
-  background-color: $bar-side-menu-item-background-color;
-  color: $bar-side-menu-item-text-color;
-
-  .icon {
-    color: $bar-side-menu-item-icon-color;
-  }
-}
-
-ion-side-menu li.item.item-divider {
-  background-color: $bar-side-menu-item-divider-color;
+.padding mm-course-mod-description .card {
+  margin-top: 0;
 }
 
 .mm-site_frontpage {
@@ -2884,8 +2803,62 @@ ion-side-menu li.item.item-divider {
         }
     }
 }
+
 .mm-site_coursesgrades .item .badge {
   right: 16px;
+}
+@media only screen and (min-width: $grid-responsive-sm-break) {
+  .mm-course-grid {
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    mm-course-list-progress {
+      padding: 0 ($padding-base-horizontal / 2);
+      margin: 0;
+      max-width: 50%;
+      width: 50%;
+      display: flex;
+
+      .card {
+        width: 100%;
+        align-items: stretch;
+      }
+    }
+
+    &:after {
+      content: '';
+      width: 100%;
+    }
+  }
+}
+
+.mm-timelinesort {
+  float: right;
+}
+
+.mm-timelinetitle {
+  float: left;
+  padding: 5px;
+}
+
+.mm-site_myoverview {
+  mm-course-list-progress .card {
+    margin-top: 0;
+
+    h5 {
+      margin-left: 10px;
+    }
+    .list.block .item {
+      border-top: $item-border-width solid $item-light-border;
+      border-bottom: $item-border-width solid $item-light-border;
+    }
+    .list.block:last-child .item {
+      border-bottom: 0;
+    }
+  }
 }
 $mma-messages-date-badge: "stable" !default;
 
@@ -2989,59 +2962,32 @@ $mma-messages-date-badge: "stable" !default;
   text-align: center;
 }
 
-@media only screen and (min-width: $grid-responsive-sm-break) {
-  .mm-course-grid {
-    padding: 0;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    flex-wrap: wrap;
 
-    mm-course-list-progress {
-      padding: 0 ($padding-base-horizontal / 2);
-      margin: 0;
-      max-width: 50%;
-      width: 50%;
-      display: flex;
+$mma-qbehaviour-deferredcbm-judgementok-color:  $green-dark !default;
+$mma-qbehaviour-deferredcbm-slightly-color:     $red-dark !default;
+$mma-qbehaviour-deferredcbm-confident-color:    $red !default;
 
-      .card {
-        width: 100%;
-        align-items: stretch;
-      }
-    }
-
-    &:after {
-      content: '';
-      width: 100%;
-    }
-  }
+.qbehaviour_deferredcbm_actual_percentage {
+  font-weight: bold;
+}
+.qbehaviour_deferredcbm_judgementok {
+  font-weight: bold;
+  color: $mma-qbehaviour-deferredcbm-judgementok-color;
+}
+.qbehaviour_deferredcbm_slightlyunderconfident, .qbehaviour_deferredcbm_slightlyoverconfident {
+  font-weight: bold;
+  color: $mma-qbehaviour-deferredcbm-slightly-color;
+}
+.qbehaviour_deferredcbm_underconfident, .qbehaviour_deferredcbm_overconfident {
+  font-weight: bold;
+  color: $mma-qbehaviour-deferredcbm-confident-color;
 }
 
-.mm-timelinesort {
-  float: right;
+.mma-qbehaviour-deferredcbm-certainty-title, .item.mma-qbehaviour-deferredcbm-certainty-title, .item.mma-qbehaviour-deferredcbm-certainty-title p {
+	font-weight: bold;
+	font-size: 16px;
 }
 
-.mm-timelinetitle {
-  float: left;
-  padding: 5px;
-}
-
-.mm-site_myoverview {
-  mm-course-list-progress .card {
-    margin-top: 0;
-
-    h5 {
-      margin-left: 10px;
-    }
-    .list.block .item {
-      border-top: $item-border-width solid $item-light-border;
-      border-bottom: $item-border-width solid $item-light-border;
-    }
-    .list.block:last-child .item {
-      border-bottom: 0;
-    }
-  }
-}
 
 $mma-mod-assign-warning-color: $red !default;
 
@@ -3920,46 +3866,6 @@ $mma-mod-wiki-subwiki-selected-background-color:   $gray-light !default;
   .mma-mod_wiki-subwiki-picker .item.item-selected .icon {
     font-size: 24px;
   }
-}
-
-.mm-site_mod_workshop,
-.mm-site_mod_workshop-submission,
-.mm-site_mod_workshop-assessment {
-
-  p.mm-overriden-grade {
-    color: $mm-success-color;
-  }
-
-  p.mm-has-overriden-grade {
-    color: $mm-error-color;
-    text-decoration: line-through;
-  }
-}
-
-
-$mma-qbehaviour-deferredcbm-judgementok-color:  $green-dark !default;
-$mma-qbehaviour-deferredcbm-slightly-color:     $red-dark !default;
-$mma-qbehaviour-deferredcbm-confident-color:    $red !default;
-
-.qbehaviour_deferredcbm_actual_percentage {
-  font-weight: bold;
-}
-.qbehaviour_deferredcbm_judgementok {
-  font-weight: bold;
-  color: $mma-qbehaviour-deferredcbm-judgementok-color;
-}
-.qbehaviour_deferredcbm_slightlyunderconfident, .qbehaviour_deferredcbm_slightlyoverconfident {
-  font-weight: bold;
-  color: $mma-qbehaviour-deferredcbm-slightly-color;
-}
-.qbehaviour_deferredcbm_underconfident, .qbehaviour_deferredcbm_overconfident {
-  font-weight: bold;
-  color: $mma-qbehaviour-deferredcbm-confident-color;
-}
-
-.mma-qbehaviour-deferredcbm-certainty-title, .item.mma-qbehaviour-deferredcbm-certainty-title, .item.mma-qbehaviour-deferredcbm-certainty-title p {
-	font-weight: bold;
-	font-size: 16px;
 }
 
 // Style ddimageortext content a bit. Almost all these styles are copied from Moodle.

@@ -84,6 +84,7 @@ angular.module('mm.addons.mod_book')
      * @return {Promise}        Promise resolved when the book is retrieved.
      */
     self.getBook = function(courseId, cmId, siteId) {
+        siteId = siteId || $mmSite.getId();
         return getBook(siteId, courseId, 'coursemodule', cmId);
     };
 
