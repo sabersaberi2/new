@@ -1,9 +1,9 @@
 {
-  "name": "moodlemobile",
+  "name": "دانه",
   "version": "3.3.2",
-  "description": "The official app for Moodle.",
+  "description": "The official app for LMSKaran.",
   "author": {
-    "name": "Moodle Pty Ltd.",
+    "name": "LMSkaran",
     "email": "mobile@moodle.com"
   },
   "repository": {
