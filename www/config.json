@@ -9,10 +9,9 @@
     "languages": {"ar": "عربي", "en": "English", "fa": "فارسی"},
     "wsservice" : "moodle_mobile_app",
     "wsextservice" : "local_mobile",
-    "demo_sites": "http://demo2.lmskaran.com",
     "gcmpn": "694767596569",
     "customurlscheme": "moodlemobile",
-    "siteurl": "demo2.lmskaran.com",
+    "siteurl": "lms.learnow.ir",
     "skipssoconfirmation": "false",
     "forcedefaultlanguage": "true",
     "privacypolicy": "https://moodle.org/mod/page/view.php?id=8148"
