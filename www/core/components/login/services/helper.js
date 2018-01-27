@@ -29,7 +29,7 @@ angular.module('mm.core.login')
  */
 .factory('$mmLoginHelper', function($q, $log, $mmConfig, mmLoginSSOCode, mmLoginSSOInAppCode, mmLoginLaunchData, $mmEvents,
             md5, $mmSite, $mmSitesManager, $mmLang, $mmUtil, $state, $mmAddonManager, $translate, mmCoreConfigConstants,
-            mmCoreEventSessionExpired, mmUserProfileState, $mmCourses, $mmFS, $mmApp, $mmEmulatorHelper, $mmWS) {
+            mmCoreEventSessionExpired, mmUserProfileState, $mmCourses, $mmFS, $mmApp, $mmEmulatorHelper) {
 
     $log = $log.getInstance('$mmLoginHelper');
 
@@ -56,23 +56,6 @@ angular.module('mm.core.login')
                     }
                 }
             });
-        });
-    };
-
-    /**
-     * Check if a site allows requesting a password reset through the app.
-     *
-     * @module mm.core.login
-     * @ngdoc method
-     * @name $mmLoginHelper#canRequestPasswordReset
-     * @param  {String} siteUrl URL of the site.
-     * @return {Promise}        Promise resolved with boolean: whether can be done through the app.
-     */
-    self.canRequestPasswordReset = function(siteUrl) {
-        return self.requestPasswordReset(siteUrl).then(function() {
-            return true;
-        }).catch(function(error) {
-            return error.available == 1 || error.errorcode != 'invalidrecord';
         });
     };
 
@@ -179,42 +162,6 @@ angular.module('mm.core.login')
     };
 
     /**
-     * Get the site policy.
-     *
-     * @module mm.core.login
-     * @ngdoc method
-     * @name $mmLoginHelper#getSitePolicy
-     * @param  {String} [siteId] Site ID. If not defined, current site.
-     * @return {Promise}         Promise resolved with the site policy.
-     */
-    self.getSitePolicy = function(siteId) {
-        return $mmSitesManager.getSite(siteId).then(function(site) {
-            // Check if it's stored in the site config.
-            var sitePolicy = site.getStoredConfig('sitepolicy');
-            if (typeof sitePolicy != 'undefined') {
-                return sitePolicy ? sitePolicy : $q.reject();
-            }
-
-            // Not in the config, try to get it using auth_email_get_signup_settings.
-            return $mmWS.callAjax('auth_email_get_signup_settings', {}, {siteurl: site.getURL()}).then(function(settings) {
-                return settings.sitepolicy ? settings.sitepolicy : $q.reject();
-            });
-        });
-    };
-
-    /**
-     * Get fixed sites.
-     *
-     * @module mm.core.login
-     * @ngdoc method
-     * @name $mmLoginHelper#getFixedSites
-     * @return {Object[]} List of fixed sites.
-     */
-    self.getFixedSites = function() {
-        return mmCoreConfigConstants.siteurl;
-    };
-
-    /**
      * Get the valid identity providers from a site config.
      *
      * @module mm.core.login
@@ -247,11 +194,9 @@ angular.module('mm.core.login')
      * @return {Promise} Promise resolved when the state changes.
      */
     self.goToAddSite = function() {
-        if (self.isFixedUrlSet()) {
+        if (mmCoreConfigConstants.siteurl) {
             // Fixed URL is set, go to credentials page.
-            var url = typeof mmCoreConfigConstants.siteurl == 'string' ?
-                    mmCoreConfigConstants.siteurl : mmCoreConfigConstants.siteurl[0].url;
-            return $state.go('mm_login.credentials', {siteurl: url});
+            return $state.go('mm_login.credentials', {siteurl: mmCoreConfigConstants.siteurl});
         } else {
             return $state.go('mm_login.site');
         }
@@ -317,19 +262,6 @@ angular.module('mm.core.login')
     };
 
     /**
-     * Check if the app is configured to use several fixed URLs.
-     *
-     * @module mm.core.login
-     * @ngdoc method
-     * @name $mmLoginHelper#hasSeveralFixedSites
-     * @return {Boolean} Whether there are several fixed URLs.
-     */
-    self.hasSeveralFixedSites = function() {
-        return mmCoreConfigConstants.siteurl && angular.isArray(mmCoreConfigConstants.siteurl) &&
-                mmCoreConfigConstants.siteurl.length > 1;
-    };
-
-    /**
      * Given a site public config, check if email signup is disabled.
      *
      * @module mm.core.login
@@ -349,7 +281,7 @@ angular.module('mm.core.login')
     };
 
     /**
-     * Check if the app is configured to use a fixed URL (only 1).
+     * Check if the app is configured to use a fixed URL.
      *
      * @module mm.core.login
      * @ngdoc method
@@ -357,8 +289,7 @@ angular.module('mm.core.login')
      * @return {Boolean} True if set, false otherwise.
      */
     self.isFixedUrlSet = function() {
-        return mmCoreConfigConstants.siteurl &&
-                (typeof mmCoreConfigConstants.siteurl == 'string' || mmCoreConfigConstants.siteurl.length == 1);
+        return !!mmCoreConfigConstants.siteurl;
     };
 
     /**
@@ -489,19 +420,6 @@ angular.module('mm.core.login')
     };
 
     /**
-     * Open forgotten password in inappbrowser.
-     *
-     * @module mm.core.login
-     * @ngdoc method
-     * @name $mmLoginHelper#openForgottenPassword
-     * @param  {String} siteUrl URL of the site.
-     * @return {Void}
-     */
-    self.openForgottenPassword = function(siteUrl) {
-        $mmUtil.openInApp(siteUrl + '/login/forgot_password.php');
-    };
-
-    /**
      * Prepare the app to perform SSO login.
      *
      * @module mm.core.login
@@ -534,31 +452,6 @@ angular.module('mm.core.login')
         });
 
         return loginUrl;
-    };
-
-    /**
-     * Request a password reset.
-     *
-     * @module mm.core.login
-     * @ngdoc method
-     * @name $mmLoginHelper#requestPasswordReset
-     * @param  {String} siteUrl    URL of the site.
-     * @param  {String} [username] Username to search.
-     * @param  {String} [email]    Email to search.
-     * @return {Promise}           Promise resolved when done.
-     */
-    self.requestPasswordReset = function(siteUrl, username, email) {
-        var params = {};
-
-        if (username) {
-            params.username = username;
-        }
-
-        if (email) {
-            params.email = email;
-        }
-
-        return $mmWS.callAjax('core_auth_request_password_reset', params, {siteurl: siteUrl});
     };
 
     /**

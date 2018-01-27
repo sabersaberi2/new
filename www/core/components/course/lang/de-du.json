@@ -1,5 +1,6 @@
 {
     "activitydisabled": "Für diese Website ist die Aktivität in der App deaktiviert.",
+    "activitynotyetviewableinapp": "Wir arbeiten daran, die Aktivität {{$a}} zu unterstützen.",
     "activitynotyetviewableremoteaddon": "Für die Website ist ein Plugin installiert, das bisher nicht unterstützt wird.",
     "activitynotyetviewablesiteupgradeneeded": "Diese Website muss aktualisiert werden.",
     "allsections": "Alle Abschnitte",
@@ -12,9 +13,8 @@
     "couldnotloadsectioncontent": "Die Abschnittsinhalte konnten nicht geladen werden. Versuche es später noch einmal.",
     "couldnotloadsections": "Die Abschnitte konnten nicht geladen werden. Versuche es später noch einmal.",
     "errordownloadingsection": "Fehler beim Herunterladen des Abschnitts",
-    "errorgetmodule": "Fehler beim Laden von Aktivitätsdaten",
-    "hiddenfromstudents": "Für Teilnehmer/innen verborgen",
+    "errorgetmodule": "Fehler beim Laden von Moduldaten",
     "nocontentavailable": "Momentan sind keine Inhalte verfügbar",
-    "overriddennotice": "Die endgültige Bewertung zu dieser Aktivität wurde manuell bearbeitet.",
-    "useactivityonbrowser": "Du kannst dies im Webbrowser verwenden."
+    "showall": "Alles anzeigen",
+    "useactivityonbrowser": "Du kannst dafür weiterhin den normalen Browser verwenden."
 }

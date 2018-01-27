@@ -1,80 +1,46 @@
+@font-face {
+    font-family: 'MyFontName';
+    src: url('fonts/woff2/IRANSansWeb_Light.woff2') format('woff2'),
+    url('fonts/woff/IRANSansWeb_Light.woff') format('woff'),
+    url('fonts/ttf/IRANSansWeb_Light.ttf') format('truetype');
+}
+*{
+    font-family: MyFontName;
+}
+h1,h2,h3,h4,h5,h6,a,option{
+    font-family: MyFontName !important;
+}
+.scroll-content {
+    direction: rtl;
+    text-align: right;
+}
 .bar-side-menu {
-    background-color: #673ab7;
+    background-color: #03a9f4;
 }
 .bar-content {
-    background-color: #673ab7;
+    background-color: #03a9f4;
 }
 .button.button-positive {
-    border-color: #673ab7;
-    background-color: #673ab7;
+    border-color: #03a9f4;
+    background-color: #03a9f4;
     color: #fff;
 }
 .item-divider {
     background-color: #fafafa;
 }
 .mm-bglogo{
-    background: #673ab7;
-    background-color: #673ab7;
+    background: #03a9f4;
+    background-color: #03a9f4;
 }
-/*/////////////////ACCORDION PANEL THAT CREATE CUSTOM/////////////////////////////*/
-
-/* Style the buttons that are used to open and close the accordion panel for course template*/
-.customItem{
-    border-radius: 10px;
-    height: 60px;
-    opacity: .75;
-    transition: .5s;
+.item .marginRight{
+    margin-right: 15px;
 }
-.activeTab{
-    opacity: 1;
-    transition: .5s;
+.item .marginLeft{
+    margin-left: 15px;
 }
-.customItem span{
-    text-shadow: 2px 2px 8px white;
-    color: black;
-    background-color: whitesmoke;
-    border-radius: 50px;
-    padding: 4px;
+mm-format-text span{
+    font-size: medium;
 }
-.pane{
-    background: url("../img/costum/AmirHossein.jpg") round;
-}
-.tab0{
-    background: url("../img/costum/1.jpg") round;
-}
-.tab1{
-    background: url("../img/costum/2.jpg") round;
-}
-.div1 {
-    /*transition: all linear 0.5s;*/
-    /*background-color: lightblue;*/
-    /*height: auto;*/
-    /*width: 100%;*/
-    position: relative;
-    /*top: 0;*/
-    /*left: 0;*/
-    background: #e5feff;
-    overflow: hidden;
-    -moz-transition: 1s;
-    -ms-transition: 1s;
-    -o-transition: 1s;
-    -webkit-transition: 1s;
-    transition: 1s;
-
-}
-.ng-hide {
-    /*height: 0;*/
-    /*width: 0;*/
-    background-color: transparent;
-    /*top:0px;*/
-    /*left: 200px;*/
-
-    height:0px;
-    background: #e5feff;
-    overflow: hidden;
-    -moz-transition: 1s;
-    -ms-transition: 1s;
-    -o-transition: 1s;
-    -webkit-transition: 1s;
-    transition: 1s;
+.mm-grades-table{
+    direction: rtl;
 }

@@ -58,11 +58,6 @@ angular.module('mm.core.courses')
                             name: $translate.instant('mm.courses.allowguests'),
                             icon: 'ion-person'
                         });
-                    } else if (instance === 'paypal') {
-                        course.enrollment.push({
-                            name: $translate.instant('mm.courses.paypalaccepted'),
-                            img: 'img/icons/paypal.png'
-                        });
                     }
                 });
 

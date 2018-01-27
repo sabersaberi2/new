@@ -81,6 +81,7 @@ angular.module('mm.addons.mod_assign')
                 scope.model = {
                     text: text
                 };
+                scope.plugin.originalText = text;
 
                 if (!scope.canEdit && !scope.edit) {
                     angular.element(element).on('click', function(e) {
@@ -108,8 +109,6 @@ angular.module('mm.addons.mod_assign')
                     scope.$on('$destroy', function() {
                         obsSaved && obsSaved.off && obsSaved.off();
                     });
-                } else {
-                    scope.plugin.originalText = text;
                 }
 
                 // Text changed in first render.

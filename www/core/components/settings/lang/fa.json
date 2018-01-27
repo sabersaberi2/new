@@ -9,7 +9,7 @@
     "deviceinfo": "اطلاعات دستگاه",
     "deviceos": "سیستم‌عامل دستگاه",
     "disableall": "غیرفعال‌کردن اطلاعیه‌ها",
-    "disabled": "غیر فعال",
+    "disabled": "غیر فعال شده است",
     "enabledebugging": "فعالسازی اشکالزدایی",
     "enabledownloadsection": "فعال‌کردن دریافت قسمت‌ها",
     "enabledownloadsectiondescription": "برای سریع‌تر شدن بارگیری قسمت‌های درس این گزینه را غیرفعال کنید.",
@@ -28,5 +28,11 @@
     "sites": "سایت‌ها",
     "spaceusage": "فضای مورد استفاده",
     "synchronization": "هماهنگسازی",
-    "total": "مجموع"
+    "total": "مجموع",
+    "syncsettings":"تنظیمات همگام سازی ",
+    "enablesyncwifi": "اجازه همگتم سازی فقط در صورت اتصال به وای فای"
+
+
+
+
 }

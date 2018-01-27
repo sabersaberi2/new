@@ -23,8 +23,7 @@ angular.module('mm.core.emulator')
  */
 .factory('$mmEmulatorManager', function($log, $q, $mmFS, $mmEmulatorClipboard, $mmEmulatorCustomURLScheme, $mmEmulatorFile,
             $mmEmulatorFileTransfer, $mmEmulatorGlobalization, $mmEmulatorInAppBrowser, $mmEmulatorLocalNotifications,
-            $mmEmulatorPushNotifications, $mmEmulatorZip, $mmUtil, $mmEmulatorMediaCapture, $mmEmulatorNetwork,
-            $ionicPlatform, $mmApp) {
+            $mmEmulatorPushNotifications, $mmEmulatorZip, $mmUtil, $mmEmulatorMediaCapture, $mmEmulatorNetwork) {
 
     $log = $log.getInstance('$mmEmulatorManager');
 
@@ -60,14 +59,6 @@ angular.module('mm.core.emulator')
         promises.push($mmEmulatorPushNotifications.load());
         promises.push($mmEmulatorZip.load());
         promises.push($mmEmulatorNetwork.load());
-
-        // Listen for 'resume' events.
-        if ($mmApp.isDesktop()) {
-            require('electron').ipcRenderer.on('mmAppFocused', function() {
-                document.dispatchEvent(new Event('resume'));
-            });
-        }
-
 
         return $mmUtil.allPromises(promises);
     };

@@ -1,0 +1,50 @@
+*{
+    font-family: MyFontName;
+}
+h1,h4,h3,h2{
+    font-family: MyFontName;
+}
+#i_body{
+    /*background: url("01.jpg");*/
+}
+@font-face {
+    font-family: 'MyFontName';
+    src: url('../fonts/woff2/IRANSansWeb_Light.woff2') format('woff2'),
+    url('../fonts/woff/IRANSansWeb_Light.woff') format('woff'),
+    url('../fonts/ttf/IRANSansWeb_Light.ttf') format('truetype');
+}
+#loginForm{
+    width: 400px;
+    margin: 100px auto;
+}
+.alertC{
+    color: green;
+    text-align: center;
+}
+.regError{
+    color: red;
+}
+
+.login{
+    margin-top:180px ;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+.login input{
+    margin: 30px 0;
+}
+#c_body{
+    background: url("../02.jpg");
+}
+h1{
+    text-align: center;
+    padding: 3px;
+    border-radius: 5px;
+}
+h4{
+    text-align: center;
+    color: red;
+}
+#userListTable{
+    background-color: whitesmoke;
+}

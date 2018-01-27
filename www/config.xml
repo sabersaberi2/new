@@ -5,14 +5,14 @@
         id        = "net.moodle.learn"
         versionCode = "3"
         version   = "1.2">
-    <name>Learn Moodle</name>
+    <name>دانه</name>
 
     <description>
-        Learn Moodle
+        نرم افزار موبایل دانه
     </description>
 
     <author href="http://moodle.com" email="mobile@moodle.com">
-        Moodle Pty Ltd
+        lmskaran
     </author>
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">

@@ -118,9 +118,6 @@ angular.module('mm.core')
      */
     self.getSites = function() {
         return $mmSitesManager.getSites().then(function(dbSites) {
-            // Sort sites by url and fullname.
-            dbSites = $mmSitesManager.sortSites(dbSites);
-
             var newSites = {}; // Create a new object to prevent showing sites that have been deleted.
 
             angular.forEach(dbSites, function(site) {
