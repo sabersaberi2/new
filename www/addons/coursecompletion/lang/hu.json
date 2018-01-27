@@ -1,7 +1,7 @@
 {
-    "complete": "Kész",
-    "completed": "Kész",
-    "coursecompletion": "A tanulóknak teljesíteni kell ezt a kurzust",
+    "complete": "Teljes",
+    "completed": "Teljesítve",
+    "coursecompletion": "Kurzus teljesítése",
     "criteria": "Követelmények",
     "criteriagroup": "Követelménycsoport",
     "criteriarequiredall": "Az összes alábbi követelmény teljesítendő",
@@ -12,6 +12,6 @@
     "pending": "Függőben",
     "required": "Kitöltendő",
     "requiredcriteria": "Előírt követelmények",
-    "status": "A kitűző állapota",
+    "status": "Állapot",
     "viewcoursereport": "Kurzusjelentés megtekintése"
 }

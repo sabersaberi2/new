@@ -5,14 +5,14 @@
         id        = "net.moodle.learn"
         versionCode = "3"
         version   = "1.2">
-    <name>دانه</name>
+    <name>Learn Moodle</name>
 
     <description>
-        نرم افزار موبایل دانه
+        Learn Moodle
     </description>
 
     <author href="http://moodle.com" email="mobile@moodle.com">
-        lmskaran
+        Moodle Pty Ltd
     </author>
 
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
@@ -134,7 +134,7 @@
     <gap:plugin name="cordova-plugin-zip" source="npm" />
 
     <gap:config-file platform="android" parent="/manifest">
-         <application android:debuggable="true" />
+         <application android:debuggable="false" />
     </gap:config-file>
 
     <!-- See MOBILE-892 -->

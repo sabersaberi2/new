@@ -21,7 +21,7 @@ angular.module('mm.core.courses')
  * @ngdoc controller
  * @name mmCoursesAvailableCtrl
  */
-.controller('mmCoursesAvailableCtrl', function($scope, $mmCourses, $q, $mmUtil, $mmSite) {
+.controller('mmCoursesAvailableCtrl', function($scope, $mmCourses, $q, $mmUtil, $mmSite,$stateParams) {
 
     // Convenience function to search courses.
     function loadCourses() {
@@ -34,10 +34,12 @@ angular.module('mm.core.courses')
             $mmUtil.showErrorModalDefault(message, 'mm.courses.errorloadcourses', true);
             return $q.reject();
         });
+
     }
 
     loadCourses().finally(function() {
         $scope.coursesLoaded = true;
+
     });
 
     $scope.refreshCourses = function() {
@@ -52,4 +54,11 @@ angular.module('mm.core.courses')
             });
         });
     };
+
+
+
+////////////////////////////////////////////////
+
+
+
 });

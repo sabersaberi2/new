@@ -7,7 +7,7 @@
                 <ul class="list">
                     <li ng-repeat="grade in grades">
                         <a class="item item-icon-right" mm-split-view-link="site.grades({courseid: grade.courseid, user: userid, forcephoneview: 1})" title="{{grade.coursefullname}}">
-                            <mm-format-text watch="true" class="marginRight">{{grade.coursefullname}}</mm-format-text>
+                            <mm-format-text watch="true">{{grade.coursefullname}}</mm-format-text>
                             <span class="badge badge-stable">{{grade.grade}}</span>
                         </a>
                     </li>
