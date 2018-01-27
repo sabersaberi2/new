@@ -10371,6 +10371,8 @@ a.button {
     color: #0064d2; }
   .icon.assertive {
     color: #cb3d4d; }
+  .icon.balanced {
+    color: #5e8100; }
   .icon.dark {
     color: #3a3a3a; }
   .icon.icon-accessory {
@@ -10427,37 +10429,64 @@ a.button {
 .item-delete .button.icon.actived {
   color: #cb3d4d; }
 
-.button.button-light, .button.button-stable, .button.button-calm, .button.button-assertive, .button.button-balanced, .button.button-energized, .button.button-royal {
+.button.button-light, .button.button-stable, .button.button-calm, .button.button-balanced, .button.button-energized, .button.button-royal {
   border-color: #0064d2;
   background-color: #ffffff;
   color: #0064d2; }
-  .button.button-light:hover, .button.button-stable:hover, .button.button-calm:hover, .button.button-assertive:hover, .button.button-balanced:hover, .button.button-energized:hover, .button.button-royal:hover {
+  .button.button-light:hover, .button.button-stable:hover, .button.button-calm:hover, .button.button-balanced:hover, .button.button-energized:hover, .button.button-royal:hover {
     color: #0064d2;
     text-decoration: none; }
-  .button.button-light.active, .button.button-light.activated, .button.button-stable.active, .button.button-stable.activated, .button.button-calm.active, .button.button-calm.activated, .button.button-assertive.active, .button.button-assertive.activated, .button.button-balanced.active, .button.button-balanced.activated, .button.button-energized.active, .button.button-energized.activated, .button.button-royal.active, .button.button-royal.activated {
+  .button.button-light.active, .button.button-light.activated, .button.button-stable.active, .button.button-stable.activated, .button.button-calm.active, .button.button-calm.activated, .button.button-balanced.active, .button.button-balanced.activated, .button.button-energized.active, .button.button-energized.activated, .button.button-royal.active, .button.button-royal.activated {
     border-color: #0064d2;
     background-color: #0064d2; }
-  .button.button-light.button-clear, .button.button-stable.button-clear, .button.button-calm.button-clear, .button.button-assertive.button-clear, .button.button-balanced.button-clear, .button.button-energized.button-clear, .button.button-royal.button-clear {
+  .button.button-light.button-clear, .button.button-stable.button-clear, .button.button-calm.button-clear, .button.button-balanced.button-clear, .button.button-energized.button-clear, .button.button-royal.button-clear {
     border-color: transparent;
     background: none;
     box-shadow: none;
     color: #0064d2; }
-  .button.button-light.button-icon, .button.button-stable.button-icon, .button.button-calm.button-icon, .button.button-assertive.button-icon, .button.button-balanced.button-icon, .button.button-energized.button-icon, .button.button-royal.button-icon {
+  .button.button-light.button-icon, .button.button-stable.button-icon, .button.button-calm.button-icon, .button.button-balanced.button-icon, .button.button-energized.button-icon, .button.button-royal.button-icon {
     border-color: transparent;
     background: none; }
-  .button.button-light.button-outline, .button.button-stable.button-outline, .button.button-calm.button-outline, .button.button-assertive.button-outline, .button.button-balanced.button-outline, .button.button-energized.button-outline, .button.button-royal.button-outline {
+  .button.button-light.button-outline, .button.button-stable.button-outline, .button.button-calm.button-outline, .button.button-balanced.button-outline, .button.button-energized.button-outline, .button.button-royal.button-outline {
     border-color: #0064d2;
     background: transparent;
     color: #0064d2; }
-    .button.button-light.button-outline.active, .button.button-light.button-outline.activated, .button.button-stable.button-outline.active, .button.button-stable.button-outline.activated, .button.button-calm.button-outline.active, .button.button-calm.button-outline.activated, .button.button-assertive.button-outline.active, .button.button-assertive.button-outline.activated, .button.button-balanced.button-outline.active, .button.button-balanced.button-outline.activated, .button.button-energized.button-outline.active, .button.button-energized.button-outline.activated, .button.button-royal.button-outline.active, .button.button-royal.button-outline.activated {
+    .button.button-light.button-outline.active, .button.button-light.button-outline.activated, .button.button-stable.button-outline.active, .button.button-stable.button-outline.activated, .button.button-calm.button-outline.active, .button.button-calm.button-outline.activated, .button.button-balanced.button-outline.active, .button.button-balanced.button-outline.activated, .button.button-energized.button-outline.active, .button.button-energized.button-outline.activated, .button.button-royal.button-outline.active, .button.button-royal.button-outline.activated {
       background-color: #0064d2;
       box-shadow: none;
       color: #fff; }
-  .button.button-light.active, .button.button-light.activated, .button.button-stable.active, .button.button-stable.activated, .button.button-calm.active, .button.button-calm.activated, .button.button-assertive.active, .button.button-assertive.activated, .button.button-balanced.active, .button.button-balanced.activated, .button.button-energized.active, .button.button-energized.activated, .button.button-royal.active, .button.button-royal.activated {
+  .button.button-light.active, .button.button-light.activated, .button.button-stable.active, .button.button-stable.activated, .button.button-calm.active, .button.button-calm.activated, .button.button-balanced.active, .button.button-balanced.activated, .button.button-energized.active, .button.button-energized.activated, .button.button-royal.active, .button.button-royal.activated {
     box-shadow: none;
     color: #ffffff; }
-    .button.button-light.active .icon, .button.button-light.activated .icon, .button.button-stable.active .icon, .button.button-stable.activated .icon, .button.button-calm.active .icon, .button.button-calm.activated .icon, .button.button-assertive.active .icon, .button.button-assertive.activated .icon, .button.button-balanced.active .icon, .button.button-balanced.activated .icon, .button.button-energized.active .icon, .button.button-energized.activated .icon, .button.button-royal.active .icon, .button.button-royal.activated .icon {
+    .button.button-light.active .icon, .button.button-light.activated .icon, .button.button-stable.active .icon, .button.button-stable.activated .icon, .button.button-calm.active .icon, .button.button-calm.activated .icon, .button.button-balanced.active .icon, .button.button-balanced.activated .icon, .button.button-energized.active .icon, .button.button-energized.activated .icon, .button.button-royal.active .icon, .button.button-royal.activated .icon {
       color: #ffffff; }
+
+.button.button-assertive {
+  border-color: #a82d3b;
+  background-color: #cb3d4d;
+  color: #fff; }
+  .button.button-assertive:hover {
+    color: #fff;
+    text-decoration: none; }
+  .button.button-assertive.active, .button.button-assertive.activated {
+    border-color: #a82d3b;
+    background-color: #a82d3b; }
+  .button.button-assertive.button-clear {
+    border-color: transparent;
+    background: none;
+    box-shadow: none;
+    color: #cb3d4d; }
+  .button.button-assertive.button-icon {
+    border-color: transparent;
+    background: none; }
+  .button.button-assertive.button-outline {
+    border-color: #cb3d4d;
+    background: transparent;
+    color: #cb3d4d; }
+    .button.button-assertive.button-outline.active, .button.button-assertive.button-outline.activated {
+      background-color: #cb3d4d;
+      box-shadow: none;
+      color: #fff; }
 
 .button.active, .button.activated {
   box-shadow: none;
@@ -12481,22 +12510,6 @@ mm-format-text .badge, mm-format-text .mma-messages-date span, .mma-messages-dat
 .cke_inner.cke_maximized .cke_toolbox_main {
   margin: 0; }
 
-.item.item-button-right .badge.mm-course-download, .mm-grades-table .item-button-right.itemcenter .badge.mm-course-download, .item.item-button-right .mma-messages-date span.mm-course-download, .mma-messages-date .item.item-button-right span.mm-course-download, .mm-grades-table .item-button-right.itemcenter .mma-messages-date span.mm-course-download, .mma-messages-date .mm-grades-table .item-button-right.itemcenter span.mm-course-download, .item.item-button-right
-.mma-messages-unreadfrom span.mm-course-download,
-.mma-messages-unreadfrom .item.item-button-right span.mm-course-download, .mm-grades-table .item-button-right.itemcenter
-.mma-messages-unreadfrom span.mm-course-download,
-.mma-messages-unreadfrom .mm-grades-table .item-button-right.itemcenter span.mm-course-download, .item.item-button-right .mma-chat-notice span.mm-course-download, .mma-chat-notice .item.item-button-right span.mm-course-download, .mm-grades-table .item-button-right.itemcenter .mma-chat-notice span.mm-course-download, .mma-chat-notice .mm-grades-table .item-button-right.itemcenter span.mm-course-download {
-  right: 44px; }
-
-.mm-course-module-handler mm-format-text + mm-format-text {
-  margin-top: 16px; }
-
-mm-course-mod-description .card .item, mm-course-mod-description .card .mm-grades-table .itemcenter, .mm-grades-table mm-course-mod-description .card .itemcenter {
-  padding: 8px; }
-
-.padding mm-course-mod-description .card, .item .item-heading.padding mm-course-mod-description .card, .mm-grades-table .itemcenter .item-heading.padding mm-course-mod-description .card {
-  margin-top: 0; }
-
 .item-course > .icon, .item-course > ion-spinner {
   height: 40px;
   width: 40px;
@@ -13207,6 +13220,22 @@ ion-side-menu li.item.item-divider, ion-side-menu .mm-grades-table li.item-divid
 .mm-site_mm_user-profile .mm-tab-handlers {
   padding-bottom: 16px; }
 
+.item.item-button-right .badge.mm-course-download, .mm-grades-table .item-button-right.itemcenter .badge.mm-course-download, .item.item-button-right .mma-messages-date span.mm-course-download, .mma-messages-date .item.item-button-right span.mm-course-download, .mm-grades-table .item-button-right.itemcenter .mma-messages-date span.mm-course-download, .mma-messages-date .mm-grades-table .item-button-right.itemcenter span.mm-course-download, .item.item-button-right
+.mma-messages-unreadfrom span.mm-course-download,
+.mma-messages-unreadfrom .item.item-button-right span.mm-course-download, .mm-grades-table .item-button-right.itemcenter
+.mma-messages-unreadfrom span.mm-course-download,
+.mma-messages-unreadfrom .mm-grades-table .item-button-right.itemcenter span.mm-course-download, .item.item-button-right .mma-chat-notice span.mm-course-download, .mma-chat-notice .item.item-button-right span.mm-course-download, .mm-grades-table .item-button-right.itemcenter .mma-chat-notice span.mm-course-download, .mma-chat-notice .mm-grades-table .item-button-right.itemcenter span.mm-course-download {
+  right: 44px; }
+
+.mm-course-module-handler mm-format-text + mm-format-text {
+  margin-top: 16px; }
+
+mm-course-mod-description .card .item, mm-course-mod-description .card .mm-grades-table .itemcenter, .mm-grades-table mm-course-mod-description .card .itemcenter {
+  padding: 8px; }
+
+.padding mm-course-mod-description .card, .item .item-heading.padding mm-course-mod-description .card, .mm-grades-table .itemcenter .item-heading.padding mm-course-mod-description .card {
+  margin-top: 0; }
+
 .mm-site_frontpage .mma-frontpage-item-container .item-media {
   min-height: 55px;
   padding-left: 54px; }
@@ -13344,6 +13373,27 @@ ion-side-menu li.item.item-divider, ion-side-menu .mm-grades-table li.item-divid
     border-bottom: 1px solid #dddddd; }
   .mm-site_myoverview mm-course-list-progress .card .list.block:last-child .item, .mm-site_myoverview mm-course-list-progress .card .list.block:last-child .mm-grades-table .itemcenter, .mm-grades-table .mm-site_myoverview mm-course-list-progress .card .list.block:last-child .itemcenter {
     border-bottom: 0; }
+
+.mm-site_mod_survey .row, .mm-site_mod_survey .mm-data-contents tr, .mm-data-contents .mm-site_mod_survey tr, .mm-site_mod_survey .input-label {
+  font-size: 14px; }
+
+.mm-site_mod_survey .mma-mod_survey-darkbg {
+  background-color: #f5f5f5; }
+
+.mm-site_mod_survey .mma-mod_survey-padding-top {
+  padding-top: 20px; }
+
+.mm-site_mod_survey textarea.mma-mod_survey-textarea {
+  height: 100px;
+  border: 1px solid #dddddd; }
+
+.mm-site_mod_survey select.mma-mod_survey-select {
+  background-color: transparent;
+  padding-left: 0px;
+  padding-right: 32px;
+  max-width: 100%; }
+  .mm-site_mod_survey select.mma-mod_survey-select .mma-mod_survey-defaultoption {
+    display: none; }
 
 .mm-site_mod_assign div.submissioneditable p,
 .mm-site_mod_assign-submission div.submissioneditable p {
@@ -14034,27 +14084,6 @@ ion-popover-view {
 .platform-ios ion-popover-view.mma-scorm-popover {
   padding-top: 10px;
   padding-bottom: 10px; }
-
-.mm-site_mod_survey .row, .mm-site_mod_survey .mm-data-contents tr, .mm-data-contents .mm-site_mod_survey tr, .mm-site_mod_survey .input-label {
-  font-size: 14px; }
-
-.mm-site_mod_survey .mma-mod_survey-darkbg {
-  background-color: #f5f5f5; }
-
-.mm-site_mod_survey .mma-mod_survey-padding-top {
-  padding-top: 20px; }
-
-.mm-site_mod_survey textarea.mma-mod_survey-textarea {
-  height: 100px;
-  border: 1px solid #dddddd; }
-
-.mm-site_mod_survey select.mma-mod_survey-select {
-  background-color: transparent;
-  padding-left: 0px;
-  padding-right: 32px;
-  max-width: 100%; }
-  .mm-site_mod_survey select.mma-mod_survey-select .mma-mod_survey-defaultoption {
-    display: none; }
 
 .mm-site_mod_wiki {
   background-color: white;
