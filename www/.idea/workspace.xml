@@ -10,23 +10,25 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="electron.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/electron.js">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="form_20.js" pinned="true" current-in-tab="true">
+        <entry file="remoteDeploymentFS://&lt;d6492392-da5e-4c7f-acc4-28fbf9853ce1&gt;/domains/learnow.ir/public_html/components/com_fabrik/js/form_20.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="-450">
+              <caret line="29" column="38" lean-forward="false" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.json" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/config.json">
+      <file leaf-file-name="vikappointments.php" pinned="true" current-in-tab="false">
+        <entry file="remoteDeploymentFS://&lt;d6492392-da5e-4c7f-acc4-28fbf9853ce1&gt;/domains/learnow.ir/public_html/components/com_vikappointments/vikappointments.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="18">
+              <caret line="1" column="3" lean-forward="true" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+              <folding>
+                <element signature="e#6#581#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -35,18 +37,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>action-sheet-options</find>
-      <find>rib</find>
-      <find>Competencies</find>
-      <find>No competencies</find>
-      <find>There are no notes of this type yet</find>
-      <find>grade in grades</find>
-      <find>mm-grades-table</find>
-      <find>The files that are available in your private area on this Moodle site.</find>
-      <find>Camera</find>
-      <find>Synchronization settings</find>
-      <find>.mm-empty-box</find>
-      <find>mm-course-list-progress</find>
       <find>course in courses track by course.id</find>
       <find>mm-course-list-item</find>
       <find>frontpage</find>
@@ -65,9 +55,22 @@
       <find>fie</find>
       <find>clea</find>
       <find>header</find>
+      <find>Uh oh</find>
+      <find>Your organisation installed a plugin that is not yet supported.</find>
+      <find>Contact the site administrator and tell them you want to use this activity with the Moodle Mobile app.</find>
+      <find>Uh oh!</find>
+      <find>Open the file</find>
+      <find>Error while loading the content.</find>
+      <find>form</find>
+      <find>action</find>
+      <find>f</find>
+      <find>alert</find>
+      <find>ezafe</find>
+      <find>aryamcourse___totalsession</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/build</dir>
+      <dir>$PROJECT_DIR$/core</dir>
       <dir>$PROJECT_DIR$</dir>
     </dirStrings>
   </component>
@@ -79,7 +82,6 @@
         <option value="$PROJECT_DIR$/addons/mod/assign/templates/index.html" />
         <option value="$PROJECT_DIR$/core/scss/styles.scss" />
         <option value="$PROJECT_DIR$/build/lang/fa.json" />
-        <option value="$PROJECT_DIR$/core/components/course/lang/fa.json" />
         <option value="$PROJECT_DIR$/addons/mod/quiz/lang/fa.json" />
         <option value="$PROJECT_DIR$/addons/competency/templates/coursecompetencies.html" />
         <option value="$PROJECT_DIR$/lib/ionic/js/angular/directive/actionSheet.js" />
@@ -93,14 +95,19 @@
         <option value="$PROJECT_DIR$/addons/frontpage/templates/frontpage.html" />
         <option value="$PROJECT_DIR$/build/custom.css" />
         <option value="$PROJECT_DIR$/addons/mod/page/lang/fa.json" />
-        <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/modules/mod_joomdle_courses_grow/assets/css/mod_joomdle.css" />
         <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/modules/mod_joomdle_courses_grow/tmpl/default (copy).php" />
-        <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/modules/mod_joomdle_courses_grow/tmpl/default.php" />
         <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/modules/mod_joomdle_courses/tmpl/default.php" />
         <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/components/com_joomdle/views/detail/assets/css/com_joomdle_views_detail.css" />
         <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/components/com_joomdle/views/detail/tmpl/default.php" />
         <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/components/com_comprofiler/plugin/templates/default/override.css" />
         <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/templates/jf_sirena/jf/assets/css/jf_custom.css" />
+        <option value="$PROJECT_DIR$/core/lang/fa.json" />
+        <option value="$PROJECT_DIR$/core/components/course/lang/fa.json" />
+        <option value="$PROJECT_DIR$/addons/mod/resource/lang/en.json" />
+        <option value="$PROJECT_DIR$/addons/mod/resource/lang/fa.json" />
+        <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/modules/mod_joomdle_courses_grow/assets/css/mod_joomdle.css" />
+        <option value="&lt;a07a225a-c06d-4afa-a629-0e77bcd9b278&gt;/domains/lmskaran.com/public_html/modules/mod_joomdle_courses_grow/tmpl/default.php" />
+        <option value="&lt;d6492392-da5e-4c7f-acc4-28fbf9853ce1&gt;/domains/learnow.ir/public_html/components/com_fabrik/js/form_20.js" />
       </list>
     </option>
   </component>
@@ -120,7 +127,7 @@
     <option name="height" value="754" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -133,26 +140,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="www" type="b2602c69:ProjectViewProjectNode" />
-              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="www" type="b2602c69:ProjectViewProjectNode" />
-              <item name="www" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="build" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="true" />
@@ -213,29 +201,32 @@
       <workItem from="1516182335972" duration="379000" />
       <workItem from="1516343347568" duration="827000" />
       <workItem from="1516344913074" duration="433000" />
+      <workItem from="1517058200028" duration="8118000" />
+      <workItem from="1517211078609" duration="2024000" />
+      <workItem from="1517214011513" duration="4238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97596000" />
+    <option name="totallyTimeSpent" value="111976000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="-4" width="1366" height="721" extended-state="6" />
+    <frame x="0" y="24" width="1366" height="693" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32901135" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22852512" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2942899" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22547585" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -270,41 +261,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="8" lean-forward="false" selection-start-line="1" selection-start-column="8" selection-end-line="1" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addons/competency/templates/coursecompetencies.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="738">
-          <caret line="41" column="89" lean-forward="false" selection-start-line="41" selection-start-column="89" selection-end-line="41" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="15" lean-forward="false" selection-start-line="27" selection-start-column="15" selection-end-line="27" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/scss/styles.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14940">
-          <caret line="830" column="30" lean-forward="false" selection-start-line="830" selection-start-column="15" selection-end-line="830" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -396,13 +352,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/core/components/course/lang/en.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="17" column="26" lean-forward="false" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/build/lang/fa.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -428,13 +377,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="830" column="30" lean-forward="false" selection-start-line="830" selection-start-column="15" selection-end-line="830" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/components/course/lang/fa.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="67" lean-forward="false" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
         </state>
       </provider>
     </entry>
@@ -613,19 +555,66 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/electron.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/electron.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/lang/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3431">
+          <caret line="199" column="18" lean-forward="true" selection-start-line="199" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/components/course/lang/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="18" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/lang/fa.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="135" column="17" lean-forward="false" selection-start-line="135" selection-start-column="17" selection-end-line="135" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/components/course/lang/fa.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="26" lean-forward="false" selection-start-line="15" selection-start-column="26" selection-end-line="15" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addons/mod/resource/lang/en.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="7" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addons/mod/resource/lang/fa.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/directives/localfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="16">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
         </state>
       </provider>
     </entry>

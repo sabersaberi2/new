@@ -10,6 +10,14 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
+      <webServer id="d6492392-da5e-4c7f-acc4-28fbf9853ce1" name="learnow" url="http://www.learnow.ir">
+        <fileTransfer host="www.learnow.ir" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>

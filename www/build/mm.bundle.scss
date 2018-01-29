@@ -2174,128 +2174,23 @@ $mm-rte-min-height: 80px !default;
     margin: 0;
   }
 }
-$chart-size: 70px;
-$doughnut-border-size: 15px;
-$doughnut-dasharray: 173;
-$doughnut-empty-colour: $gray-light;
-$doughnut-fill-colour: $mm-color-light;
-$doughnut-border-colour:  $gray-dark;
-$doughnut-text-colour: $gray-darker;
 
-.item-course {
-  >.icon, >ion-spinner {
-    height: 32px + ($item-padding /2);
-    width: 32px + ($item-padding /2);
-    right: 0;
-    top: 6px;
-    color: $doughnut-text-colour;
-    position: absolute;
-  }
+.item.item-button-right .badge.mm-course-download{
+  right: $spinner-width + $item-padding;
 }
 
-.item-progress {
-  @extend .item-avatar;
-  padding-left: $chart-size + ($item-padding * 2);
-  min-height: $chart-size + ($item-padding * 2);
-  >.progress-chart-container {
-    max-width: $chart-size;
-    max-height: $chart-size;
-    position: absolute;
-    top: $item-padding;
-    left: $item-padding;
-  }
-  h2 {
-    font-size: 21px;
-  }
+.mm-course-module-handler mm-format-text + mm-format-text {
+  margin-top: 16px;
 }
 
-.progress-chart-container {
-  height: $chart-size;
-  width: $chart-size;
-
-  .progress-doughnut {
-    position: relative;
-    height: $chart-size;
-    width: $chart-size;
-    background-clip: padding-box;
-    border: $doughnut-border-size solid $doughnut-empty-colour;
-    border-radius: 50%;
-    box-sizing: border-box;
-    display: table;
-
-    .progress-text {
-      display: table-cell;
-      text-align: center;
-      vertical-align: middle;
-      color: $doughnut-text-colour;
-      font-size: 95%;
-      letter-spacing: -1px;
-    }
-
-    .progress-indicator {
-      position: absolute;
-      top: ($doughnut-border-size * -1);
-      left: ($doughnut-border-size * -1);
-      height: $chart-size;
-      width: $chart-size;
-
-      svg {
-        position: relative;
-        height: 100%;
-        width: 100%;
-
-        .circle {
-          stroke-width: $doughnut-border-size;
-          stroke: $doughnut-fill-colour;
-          fill: none;
-          stroke-dasharray: $doughnut-dasharray;
-          stroke-dashoffset: $doughnut-dasharray;
-          transform: rotate(-90deg);
-          transform-origin: center center;
-
-          @for $i from 1 through 100 {
-              &.percent-#{$i} {
-                  stroke-dashoffset: $doughnut-dasharray - ($i / 100 * $doughnut-dasharray);
-              }
-          }
-        }
-      }
-    }
-  }
-
-  .no-progress {
-    height: $chart-size;
-    width: $chart-size;
-    background-color: $doughnut-empty-colour;
-    border-radius: 50%;
-    position: relative;
-    border: 0.5px solid $doughnut-border-colour;
-
-    .icon {
-      position: absolute;
-      text-align: center;
-      /*rtl:ignore*/
-      left: -1px;
-      top: -1px;
-      right: 0;
-      bottom: 0;
-      margin: 0;
-      color: $white;
-      height: $chart-size;
-      width: $chart-size;
-      line-height: $chart-size;
-      font-size: ($chart-size / 2) + 10px;
-      &:before {
-        width: $chart-size;
-      }
-    }
-  }
+mm-course-mod-description .card .item {
+  padding: $item-padding / 2;
 }
 
-.mm-site_mm_coursescategories .item-icon-left,
-mm-course-list-item .item-icon-left {
-  color: $black;
+.padding mm-course-mod-description .card {
+  margin-top: 0;
 }
+
 .mm-capture-media-modal {
     background-color: $gray-light;
 
@@ -2375,20 +2270,6 @@ mm-course-list-item .item-icon-left {
                 color: $red;
             }
         }
-    }
-}
-
-.mm-fileuploader-file-handler {
-    input {
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        opacity: 0;
-        outline: none;
-        z-index: 100;
-        cursor: pointer;
     }
 }
 
@@ -2702,10 +2583,142 @@ li.mm-question-answer-incorrect,
   color: $mm-question-warning-color;
 }
 
-#mm-settings-languagelabel {
-  color: $base-color;
+.mm-fileuploader-file-handler {
+    input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        opacity: 0;
+        outline: none;
+        z-index: 100;
+        cursor: pointer;
+    }
 }
 
+$chart-size: 70px;
+$doughnut-border-size: 15px;
+$doughnut-dasharray: 173;
+$doughnut-empty-colour: $gray-light;
+$doughnut-fill-colour: $mm-color-light;
+$doughnut-border-colour:  $gray-dark;
+$doughnut-text-colour: $gray-darker;
+
+.item-course {
+  >.icon, >ion-spinner {
+    height: 32px + ($item-padding /2);
+    width: 32px + ($item-padding /2);
+    right: 0;
+    top: 6px;
+    color: $doughnut-text-colour;
+    position: absolute;
+  }
+}
+
+.item-progress {
+  @extend .item-avatar;
+  padding-left: $chart-size + ($item-padding * 2);
+  min-height: $chart-size + ($item-padding * 2);
+  >.progress-chart-container {
+    max-width: $chart-size;
+    max-height: $chart-size;
+    position: absolute;
+    top: $item-padding;
+    left: $item-padding;
+  }
+  h2 {
+    font-size: 21px;
+  }
+}
+
+.progress-chart-container {
+  height: $chart-size;
+  width: $chart-size;
+
+  .progress-doughnut {
+    position: relative;
+    height: $chart-size;
+    width: $chart-size;
+    background-clip: padding-box;
+    border: $doughnut-border-size solid $doughnut-empty-colour;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: table;
+
+    .progress-text {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      color: $doughnut-text-colour;
+      font-size: 95%;
+      letter-spacing: -1px;
+    }
+
+    .progress-indicator {
+      position: absolute;
+      top: ($doughnut-border-size * -1);
+      left: ($doughnut-border-size * -1);
+      height: $chart-size;
+      width: $chart-size;
+
+      svg {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        .circle {
+          stroke-width: $doughnut-border-size;
+          stroke: $doughnut-fill-colour;
+          fill: none;
+          stroke-dasharray: $doughnut-dasharray;
+          stroke-dashoffset: $doughnut-dasharray;
+          transform: rotate(-90deg);
+          transform-origin: center center;
+
+          @for $i from 1 through 100 {
+              &.percent-#{$i} {
+                  stroke-dashoffset: $doughnut-dasharray - ($i / 100 * $doughnut-dasharray);
+              }
+          }
+        }
+      }
+    }
+  }
+
+  .no-progress {
+    height: $chart-size;
+    width: $chart-size;
+    background-color: $doughnut-empty-colour;
+    border-radius: 50%;
+    position: relative;
+    border: 0.5px solid $doughnut-border-colour;
+
+    .icon {
+      position: absolute;
+      text-align: center;
+      /*rtl:ignore*/
+      left: -1px;
+      top: -1px;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      color: $white;
+      height: $chart-size;
+      width: $chart-size;
+      line-height: $chart-size;
+      font-size: ($chart-size / 2) + 10px;
+      &:before {
+        width: $chart-size;
+      }
+    }
+  }
+}
+
+.mm-site_mm_coursescategories .item-icon-left,
+mm-course-list-item .item-icon-left {
+  color: $black;
+}
 // Bar styles
 .bar-side-menu {
   @include bar-style($bar-side-menu-color, $bar-side-menu-border-color, $bar-side-menu-text-color);
@@ -2759,21 +2772,8 @@ ion-side-menu li.item.item-divider {
 .mm-site_mm_user-profile .mm-tab-handlers {
     padding-bottom: 16px;
 }
-
-.item.item-button-right .badge.mm-course-download{
-  right: $spinner-width + $item-padding;
-}
-
-.mm-course-module-handler mm-format-text + mm-format-text {
-  margin-top: 16px;
-}
-
-mm-course-mod-description .card .item {
-  padding: $item-padding / 2;
-}
-
-.padding mm-course-mod-description .card {
-  margin-top: 0;
+#mm-settings-languagelabel {
+  color: $base-color;
 }
 
 
@@ -2803,6 +2803,59 @@ mm-course-mod-description .card .item {
             height: 22px;
         }
     }
+}
+@media only screen and (min-width: $grid-responsive-sm-break) {
+  .mm-course-grid {
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    mm-course-list-progress {
+      padding: 0 ($padding-base-horizontal / 2);
+      margin: 0;
+      max-width: 50%;
+      width: 50%;
+      display: flex;
+
+      .card {
+        width: 100%;
+        align-items: stretch;
+      }
+    }
+
+    &:after {
+      content: '';
+      width: 100%;
+    }
+  }
+}
+
+.mm-timelinesort {
+  float: right;
+}
+
+.mm-timelinetitle {
+  float: left;
+  padding: 5px;
+}
+
+.mm-site_myoverview {
+  mm-course-list-progress .card {
+    margin-top: 0;
+
+    h5 {
+      margin-left: 10px;
+    }
+    .list.block .item {
+      border-top: $item-border-width solid $item-light-border;
+      border-bottom: $item-border-width solid $item-light-border;
+    }
+    .list.block:last-child .item {
+      border-bottom: 0;
+    }
+  }
 }
 .mm-site_coursesgrades .item .badge {
   right: 16px;
@@ -2909,89 +2962,144 @@ $mma-messages-date-badge: "stable" !default;
   text-align: center;
 }
 
-@media only screen and (min-width: $grid-responsive-sm-break) {
-  .mm-course-grid {
+
+.mm-site_mod_data {
+  .recordcheckbox {
+    display: none;
+  }
+}
+
+.mm-data-contents {
+  overflow: visible;
+  white-space: normal;
+  word-break: break-word;
+  padding: $item-padding;
+  background-color: white;
+  border-top-width: $item-border-width;
+  border-bottom-width: $item-border-width;
+  border-style: solid;
+  border-color: $item-default-border;
+
+  table, tbody {
+    display: block;
+  }
+
+  tr {
+    @extend .row;
     padding: 0;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    flex-wrap: wrap;
+  }
 
-    mm-course-list-progress {
-      padding: 0 ($padding-base-horizontal / 2);
+  td, th {
+    @extend .col;
+  }
+}
+
+#mma-mod_data-advanced-search-form,
+#mma-mod_data-edit-form  {
+  table {
+    width: 100%;
+  }
+  td {
+    vertical-align: top;
+  }
+
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"],
+  .item-select,
+  mm-attachments>.item-border {
+    width: 100%;
+    margin: -1px;
+    border: 1px solid $gray;
+    padding: 16px 0 16px 16px;
+    height: 56px;
+  }
+
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"] {
+    -webkit-appearance: none;
+  }
+
+  mm-attachments .item-media {
+    width: 100%;
+    margin: -1px;
+    border: 1px solid $gray;
+    height: 56px;
+  }
+
+  mm-multiple-select .item {
+    width: 100%;
+    margin: -1px;
+    border: 1px solid $gray;
+    padding: 16px 0 16px 16px;
+  }
+
+  mm-attachments + .item-stacked-label {
+    border-top: 0px;
+    padding: 0;
+    margin-right: 1px;
+
+    ion-label {
       margin: 0;
-      max-width: 50%;
-      width: 50%;
-      display: flex;
-
-      .card {
-        width: 100%;
-        align-items: stretch;
-      }
+      padding-left: 16px;
     }
 
-    &:after {
-      content: '';
+    input {
+      border: 0;
+      margin: 0;
+    }
+  }
+
+  mm-attachments .item {
+    width: 100%;
+    margin: -1px;
+    border: 1px solid $gray;
+    overflow: hidden;
+  }
+
+  .item-checkbox {
+    margin-right: 1px;
+  }
+
+  .item-input.item-select {
+    margin-bottom: -6px;
+
+    select {
       width: 100%;
+      left: 0;
+      max-width: none;
     }
   }
-}
 
-.mm-timelinesort {
-  float: right;
-}
+  .item-input.mm-latlong {
+    width: 100%;
+    margin: -1px;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
 
-.mm-timelinetitle {
-  float: left;
-  padding: 5px;
-}
-
-.mm-site_myoverview {
-  mm-course-list-progress .card {
-    margin-top: 0;
-
-    h5 {
-      margin-left: 10px;
-    }
-    .list.block .item {
-      border-top: $item-border-width solid $item-light-border;
-      border-bottom: $item-border-width solid $item-light-border;
-    }
-    .list.block:last-child .item {
-      border-bottom: 0;
+    input {
+      border: 0;
     }
   }
-}
-.mm-site_mod_survey {
-  .row, .input-label {
-    font-size: $font-size-base;
-  }
 
-  .mma-mod_survey-darkbg {
-    background-color: $item-divider-bg;
-  }
-
-  .mma-mod_survey-padding-top {
-    padding-top: 20px;
-  }
-
-  textarea.mma-mod_survey-textarea {
-    height: 100px;
-    border: 1px solid $item-default-border;
-  }
-
-  select.mma-mod_survey-select {
-    background-color: transparent;
-    padding-left: 0px;
-    padding-right: $item-padding * 2;
-    max-width: 100%;
-
-    .mma-mod_survey-defaultoption {
-      display: none;
-    }
+  .mm-item-has-rich-text-editor {
+    margin-right: 1px;
   }
 }
-
 
 $mma-mod-assign-warning-color: $red !default;
 
@@ -3339,144 +3447,6 @@ $mma-chat-notice-badge: "stable" !default;
     }
   }
 }
-
-.mm-site_mod_data {
-  .recordcheckbox {
-    display: none;
-  }
-}
-
-.mm-data-contents {
-  overflow: visible;
-  white-space: normal;
-  word-break: break-word;
-  padding: $item-padding;
-  background-color: white;
-  border-top-width: $item-border-width;
-  border-bottom-width: $item-border-width;
-  border-style: solid;
-  border-color: $item-default-border;
-
-  table, tbody {
-    display: block;
-  }
-
-  tr {
-    @extend .row;
-    padding: 0;
-  }
-
-  td, th {
-    @extend .col;
-  }
-}
-
-#mma-mod_data-advanced-search-form,
-#mma-mod_data-edit-form  {
-  table {
-    width: 100%;
-  }
-  td {
-    vertical-align: top;
-  }
-
-  textarea,
-  input[type="text"],
-  input[type="password"],
-  input[type="datetime"],
-  input[type="datetime-local"],
-  input[type="date"],
-  input[type="month"],
-  input[type="time"],
-  input[type="week"],
-  input[type="number"],
-  input[type="email"],
-  input[type="url"],
-  input[type="search"],
-  input[type="tel"],
-  input[type="color"],
-  .item-select,
-  mm-attachments>.item-border {
-    width: 100%;
-    margin: -1px;
-    border: 1px solid $gray;
-    padding: 16px 0 16px 16px;
-    height: 56px;
-  }
-
-  input[type="datetime"],
-  input[type="datetime-local"],
-  input[type="date"] {
-    -webkit-appearance: none;
-  }
-
-  mm-attachments .item-media {
-    width: 100%;
-    margin: -1px;
-    border: 1px solid $gray;
-    height: 56px;
-  }
-
-  mm-multiple-select .item {
-    width: 100%;
-    margin: -1px;
-    border: 1px solid $gray;
-    padding: 16px 0 16px 16px;
-  }
-
-  mm-attachments + .item-stacked-label {
-    border-top: 0px;
-    padding: 0;
-    margin-right: 1px;
-
-    ion-label {
-      margin: 0;
-      padding-left: 16px;
-    }
-
-    input {
-      border: 0;
-      margin: 0;
-    }
-  }
-
-  mm-attachments .item {
-    width: 100%;
-    margin: -1px;
-    border: 1px solid $gray;
-    overflow: hidden;
-  }
-
-  .item-checkbox {
-    margin-right: 1px;
-  }
-
-  .item-input.item-select {
-    margin-bottom: -6px;
-
-    select {
-      width: 100%;
-      left: 0;
-      max-width: none;
-    }
-  }
-
-  .item-input.mm-latlong {
-    width: 100%;
-    margin: -1px;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-
-    input {
-      border: 0;
-    }
-  }
-
-  .mm-item-has-rich-text-editor {
-    margin-right: 1px;
-  }
-}
 .mm-site_mod_feedback {
   .mm-analysis {
     ul {
@@ -3780,6 +3750,36 @@ ion-popover-view {
 .platform-ios ion-popover-view.mma-scorm-popover {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.mm-site_mod_survey {
+  .row, .input-label {
+    font-size: $font-size-base;
+  }
+
+  .mma-mod_survey-darkbg {
+    background-color: $item-divider-bg;
+  }
+
+  .mma-mod_survey-padding-top {
+    padding-top: 20px;
+  }
+
+  textarea.mma-mod_survey-textarea {
+    height: 100px;
+    border: 1px solid $item-default-border;
+  }
+
+  select.mma-mod_survey-select {
+    background-color: transparent;
+    padding-left: 0px;
+    padding-right: $item-padding * 2;
+    max-width: 100%;
+
+    .mma-mod_survey-defaultoption {
+      display: none;
+    }
+  }
 }
 
 $mma-mod-wiki-toc-level-padding:    12px !default;
