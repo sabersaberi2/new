@@ -8290,7 +8290,7 @@ input:checked + .checkbox-icon:after {
 .item-radio input {
   /* hide any radio button inputs elements (the ugly circles) */
   position: absolute;
-  left: -9999px; }
+  right: -9999px; }
   .item-radio input:checked + .radio-content .item-content {
     /* style the item content when its checked */
     background: #f7f7f7; }

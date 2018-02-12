@@ -913,6 +913,8 @@
     "mma.mod_quiz.completedon": "پایان",
     "mma.mod_quiz.confirmclose": "شما در آستانهٔ اتمام شرکت خود در آزمون هستید. پس ا ز اتمام شرکت دیگر نمی‌توانید پاسخ‌های خود را تغییر دهید.",
     "mma.mod_quiz.confirmleavequizonerror": "در حین ذخیرهٔ پاسخ‌ها خطایی رخ داد. آیا مطمئن هستید که می‌خواهید از آزمون خارج شوید؟",
+    "mma.mod_quiz.confirmstart": " . این آزمون به مدت {{$a}} زمانبندی شده است . زمان شما از لحظه مواجهه با سوال محاسبه خواهد شد . اگر موافقید دکمه ارسال را لمس کنید",
+    "mma.mod_quiz.confirmstartheader": "امتحان زماندار",
     "mma.mod_quiz.continueattemptquiz": "ادامهٔ آخرین دفعهٔ شرکت در آزمون",
     "mma.mod_quiz.continuepreview": "ادامهٔ آخرین پیش‌نمایش",
     "mma.mod_quiz.errorquestionsnotsupported": "این آزمون را نمی توان در نسخه موبایل انجام داد، زیرا می تواند شامل سوالاتی باشد که توسط برنامه پشتیبانی نمی شود.",
