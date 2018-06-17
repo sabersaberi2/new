@@ -325,4 +325,6 @@ angular.module('mm.core.courses')
             }
         };
     }
+
+    $scope.console1=course;
 });

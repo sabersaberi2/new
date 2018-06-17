@@ -81,7 +81,7 @@ angular.module('mm.core.courses', ['mm.core.contentlinks', 'mm.core.sidemenu'])
         views: {
             'site': {
                 templateUrl: 'core/components/courses/templates/availablecourses.html',
-                controller: 'mmCoursesAvailableCtrl'
+                controller: 'mmCoursesListCtrl'
             }
         }
     });

@@ -177,6 +177,10 @@ angular.module('mm.core.login')
         });
     };
 
+
+
+
+
     $scope.forgottenPassword = function() {
         if (siteConfig && siteConfig.forgottenpasswordurl) {
             // URL set, open it.

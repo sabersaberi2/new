@@ -2243,18 +2243,132 @@ $mm-rte-min-height: 80px !default;
     margin: 0;
   }
 }
-.mm-fileuploader-file-handler {
-    input {
-        position: absolute;
-        top: 0;
-        right: 0;
-        min-width: 100%;
-        min-height: 100%;
-        opacity: 0;
-        outline: none;
-        z-index: 100;
-        cursor: pointer;
+$chart-size: 70px;
+$doughnut-border-size: 15px;
+$doughnut-dasharray: 173;
+$doughnut-empty-colour: $gray-light;
+$doughnut-fill-colour: $mm-color-light;
+$doughnut-border-colour:  $gray-dark;
+$doughnut-text-colour: $gray-darker;
+
+.item-course {
+  >.icon, >ion-spinner {
+    height: 32px + ($item-padding /2);
+    width: 32px + ($item-padding /2);
+    right: 0;
+    top: 6px;
+    color: $doughnut-text-colour;
+    position: absolute;
+  }
+}
+
+.item-progress {
+  @extend .item-avatar;
+  padding-left: $chart-size + ($item-padding * 2);
+  min-height: $chart-size + ($item-padding * 2);
+  >.progress-chart-container {
+    max-width: $chart-size;
+    max-height: $chart-size;
+    position: absolute;
+    top: $item-padding;
+    left: $item-padding;
+  }
+  h2 {
+    font-size: 21px;
+  }
+}
+
+.progress-chart-container {
+  height: $chart-size;
+  width: $chart-size;
+
+  .progress-doughnut {
+    position: relative;
+    height: $chart-size;
+    width: $chart-size;
+    background-clip: padding-box;
+    border: $doughnut-border-size solid $doughnut-empty-colour;
+    border-radius: 50%;
+    box-sizing: border-box;
+    display: table;
+
+    .progress-text {
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle;
+      color: $doughnut-text-colour;
+      font-size: 95%;
+      letter-spacing: -1px;
     }
+
+    .progress-indicator {
+      position: absolute;
+      top: ($doughnut-border-size * -1);
+      left: ($doughnut-border-size * -1);
+      height: $chart-size;
+      width: $chart-size;
+
+      svg {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        .circle {
+          stroke-width: $doughnut-border-size;
+          stroke: $doughnut-fill-colour;
+          fill: none;
+          stroke-dasharray: $doughnut-dasharray;
+          stroke-dashoffset: $doughnut-dasharray;
+          transform: rotate(-90deg);
+          transform-origin: center center;
+
+          @for $i from 1 through 100 {
+              &.percent-#{$i} {
+                  stroke-dashoffset: $doughnut-dasharray - ($i / 100 * $doughnut-dasharray);
+              }
+          }
+        }
+      }
+    }
+  }
+
+  .no-progress {
+    height: $chart-size;
+    width: $chart-size;
+    background-color: $doughnut-empty-colour;
+    border-radius: 50%;
+    position: relative;
+    border: 0.5px solid $doughnut-border-colour;
+
+    .icon {
+      position: absolute;
+      text-align: center;
+      /*rtl:ignore*/
+      left: -1px;
+      top: -1px;
+      right: 0;
+      bottom: 0;
+      margin: 0;
+      color: $white;
+      height: $chart-size;
+      width: $chart-size;
+      line-height: $chart-size;
+      font-size: ($chart-size / 2) + 10px;
+      &:before {
+        width: $chart-size;
+      }
+    }
+  }
+}
+
+.mm-site_mm_coursescategories .item-icon-left,
+mm-course-list-item .item-icon-left {
+  color: $black;
+}
+
+.mm-course-enrollment-img {
+  max-width: 20px;
+  max-height: 34px;
 }
 
 
@@ -2274,6 +2388,278 @@ mm-course-mod-description .card .item {
   margin-top: 0;
 }
 
+
+.mm-capture-media-modal {
+    background-color: $gray-light;
+
+    .bar-header {
+        @include bar-style($bar-content-bg, $bar-content-border, $bar-content-text);
+
+        .button {
+            color: $bar-content-text;
+            font-weight: normal;
+        }
+    }
+
+    .mm-capture-media-modal-content {
+        text-align: center;
+
+        .mm-av-wrapper {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: table;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            clear: both;
+        }
+
+        audio, video, img {
+            width: 100%;
+            height: 100%;
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            object-fit: contain;
+
+            &.mm-webcam-stream {
+                -webkit-transform: scaleX(-1);
+                transform: scaleX(-1);
+            }
+        }
+
+        .mm-webcam-image-canvas {
+            display: none;
+        }
+
+        .mm-audio-record-container {
+            width: 100%;
+            height: 100%;
+
+            .mm-audio-canvas {
+                width: 100%;
+                height: 100%;
+            }
+
+            .mm-audio-captured {
+                width: 100%;
+            }
+        }
+    }
+
+
+    .bar-footer {
+        background-color: $gray;
+        border-top-color: $gray-dark;
+
+        .col {
+            padding: 0;
+            line-height: $bar-height - $bar-padding-portrait * 2;
+
+            .button-icon {
+                color: $black;
+            }
+
+            .ion-record, .ion-trash-a {
+                color: $red;
+            }
+        }
+    }
+}
+
+.mm-fileuploader-file-handler {
+    input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        opacity: 0;
+        outline: none;
+        z-index: 100;
+        cursor: pointer;
+    }
+}
+
+
+.mm-mm_login_sites {
+  .item-thumbnail-left .item-content {
+    padding-top: $item-padding;
+    padding-right: $item-padding;
+  }
+
+  .list-left-editing .item-thumbnail-left .item-content {
+    padding-right: (ceil( ($item-padding * 3) + ($item-padding / 3) ) - 5);
+  }
+
+  .avatar {
+    margin: 0;
+    width: 80px;
+    height: 80px;
+    max-width: 80px;
+    max-height: 80px;
+    border-radius : 50%;
+    padding: 4px;
+    border: 1px solid #ddd;
+    text-indent: -99999px;
+  }
+}
+
+.mm-login-sitepolicy-iframe {
+  height: 300px;
+}
+
+.mm-oauth-icon, .item.mm-oauth-icon {
+  padding: ($item-padding / 2);
+
+  > img, > span {
+    max-height: $item-icon-font-size;
+    max-width: $item-icon-font-size;
+    vertical-align: middle;
+  }
+  > span {
+    margin-left: 5px;
+    color: $gray-darker;
+  }
+}
+
+.mm-mm_login_credentials, .mm-mm_login_reconnect, .mm-mm_login_site {
+  .mm-ioninput-password {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  background: -webkit-radial-gradient(white, $gray-light);
+  background: radial-gradient(white, $gray-light);
+
+  img {
+    max-width: 100%;
+  }
+
+  img.moodle-logo {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .box {
+    padding: 16px;
+    background: $white;
+    border: 1px solid $item-default-border;
+  }
+
+  .mm-sitename, .mm-siteurl {
+    @if $mm-fixed-url { display: none; }
+  }
+}
+
+
+/* - User grades table (most of it extracted from MM1)
+-------------------------------------------------------------------------- */
+.mm-grades-container {
+  padding-right: 2px;
+  background: white;
+}
+
+.mm-grades-table {
+  border-collapse: collapse;
+  line-height: 20px;
+  width: 100%;
+  font-size: 16px;
+  color: $item-stable-text;
+  tr {
+    border-bottom: 1px solid $item-light-border;
+  }
+  th,
+  td {
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    vertical-align: top;
+    white-space: normal;
+  }
+  thead th {
+    padding-left: 10px;
+    vertical-align: bottom;
+    font-weight: bold;
+  }
+  tbody th {
+    font-weight: normal;
+  }
+  .item {
+    display: table-cell;
+  }
+  th {
+    &.b1b {
+      padding-left: 20px;
+    }
+    &.item {
+      padding-left: 30px;
+    }
+    &.baggt {
+      padding-left: 30px;
+    }
+    img {
+      margin-left: -20px;
+      float: left;
+    }
+  }
+  .b1l {
+    width: 10px;
+    min-width: 10px;
+  }
+  .b1t,
+  .baggt {
+    font-weight: bold;
+  }
+  .itemcenter {
+    @extend .item;
+    padding: 10px;
+    white-space: normal;
+  }
+  .feedbacktext {
+    padding-left: 10px;
+    .no-overflow {
+      overflow: auto;
+    }
+  }
+  .dimmed_text,
+  .hidden,
+  .hidden a {
+    color: #aaa;
+  }
+  .oddd1,
+  .oddd3,
+  .evend3,
+  .levelodd {
+    background-color: $item-divider-bg;
+  }
+  .oddd2,
+  .evend2,
+  .oddd4,
+  .evend4 {
+    background-color: $item-stable-bg;
+  }
+  .leveleven {
+    background-color: $item-light-bg;
+  }
+  .column-leader {
+    border-left: 1px solid $item-light-border;
+    border-top: 1px solid $item-light-border;
+    border-bottom: 1px solid $item-light-border;
+    &.level1 {
+      border-left: 0;
+    }
+  }
+  .column-itemname {
+    border-right: 1px solid $item-light-border;
+    border-top: 1px solid $item-light-border;
+    border-bottom: 1px solid $item-light-border;
+  }
+}
 
 
 $mm-question-correct-color:         $green-dark !default;
@@ -2413,406 +2799,9 @@ li.mm-question-answer-incorrect,
 .questioncorrectnessicon {
   font-size: 20px;
 }
-.mm-capture-media-modal {
-    background-color: $gray-light;
-
-    .bar-header {
-        @include bar-style($bar-content-bg, $bar-content-border, $bar-content-text);
-
-        .button {
-            color: $bar-content-text;
-            font-weight: normal;
-        }
-    }
-
-    .mm-capture-media-modal-content {
-        text-align: center;
-
-        .mm-av-wrapper {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            display: table;
-            height: 100%;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-            clear: both;
-        }
-
-        audio, video, img {
-            width: 100%;
-            height: 100%;
-            display: table-cell;
-            text-align: center;
-            vertical-align: middle;
-            object-fit: contain;
-
-            &.mm-webcam-stream {
-                -webkit-transform: scaleX(-1);
-                transform: scaleX(-1);
-            }
-        }
-
-        .mm-webcam-image-canvas {
-            display: none;
-        }
-
-        .mm-audio-record-container {
-            width: 100%;
-            height: 100%;
-
-            .mm-audio-canvas {
-                width: 100%;
-                height: 100%;
-            }
-
-            .mm-audio-captured {
-                width: 100%;
-            }
-        }
-    }
-
-
-    .bar-footer {
-        background-color: $gray;
-        border-top-color: $gray-dark;
-
-        .col {
-            padding: 0;
-            line-height: $bar-height - $bar-padding-portrait * 2;
-
-            .button-icon {
-                color: $black;
-            }
-
-            .ion-record, .ion-trash-a {
-                color: $red;
-            }
-        }
-    }
-}
-
 #mm-settings-languagelabel {
   color: $base-color;
 }
-
-$chart-size: 70px;
-$doughnut-border-size: 15px;
-$doughnut-dasharray: 173;
-$doughnut-empty-colour: $gray-light;
-$doughnut-fill-colour: $mm-color-light;
-$doughnut-border-colour:  $gray-dark;
-$doughnut-text-colour: $gray-darker;
-
-.item-course {
-  >.icon, >ion-spinner {
-    height: 32px + ($item-padding /2);
-    width: 32px + ($item-padding /2);
-    right: 0;
-    top: 6px;
-    color: $doughnut-text-colour;
-    position: absolute;
-  }
-}
-
-.item-progress {
-  @extend .item-avatar;
-  padding-left: $chart-size + ($item-padding * 2);
-  min-height: $chart-size + ($item-padding * 2);
-  >.progress-chart-container {
-    max-width: $chart-size;
-    max-height: $chart-size;
-    position: absolute;
-    top: $item-padding;
-    left: $item-padding;
-  }
-  h2 {
-    font-size: 21px;
-  }
-}
-
-.progress-chart-container {
-  height: $chart-size;
-  width: $chart-size;
-
-  .progress-doughnut {
-    position: relative;
-    height: $chart-size;
-    width: $chart-size;
-    background-clip: padding-box;
-    border: $doughnut-border-size solid $doughnut-empty-colour;
-    border-radius: 50%;
-    box-sizing: border-box;
-    display: table;
-
-    .progress-text {
-      display: table-cell;
-      text-align: center;
-      vertical-align: middle;
-      color: $doughnut-text-colour;
-      font-size: 95%;
-      letter-spacing: -1px;
-    }
-
-    .progress-indicator {
-      position: absolute;
-      top: ($doughnut-border-size * -1);
-      left: ($doughnut-border-size * -1);
-      height: $chart-size;
-      width: $chart-size;
-
-      svg {
-        position: relative;
-        height: 100%;
-        width: 100%;
-
-        .circle {
-          stroke-width: $doughnut-border-size;
-          stroke: $doughnut-fill-colour;
-          fill: none;
-          stroke-dasharray: $doughnut-dasharray;
-          stroke-dashoffset: $doughnut-dasharray;
-          transform: rotate(-90deg);
-          transform-origin: center center;
-
-          @for $i from 1 through 100 {
-              &.percent-#{$i} {
-                  stroke-dashoffset: $doughnut-dasharray - ($i / 100 * $doughnut-dasharray);
-              }
-          }
-        }
-      }
-    }
-  }
-
-  .no-progress {
-    height: $chart-size;
-    width: $chart-size;
-    background-color: $doughnut-empty-colour;
-    border-radius: 50%;
-    position: relative;
-    border: 0.5px solid $doughnut-border-colour;
-
-    .icon {
-      position: absolute;
-      text-align: center;
-      /*rtl:ignore*/
-      left: -1px;
-      top: -1px;
-      right: 0;
-      bottom: 0;
-      margin: 0;
-      color: $white;
-      height: $chart-size;
-      width: $chart-size;
-      line-height: $chart-size;
-      font-size: ($chart-size / 2) + 10px;
-      &:before {
-        width: $chart-size;
-      }
-    }
-  }
-}
-
-.mm-site_mm_coursescategories .item-icon-left,
-mm-course-list-item .item-icon-left {
-  color: $black;
-}
-
-.mm-course-enrollment-img {
-  max-width: 20px;
-  max-height: 34px;
-}
-
-
-.foreground-ion-edit.ion-edit:before {
-    position: relative;
-    left: 120px;
-    bottom: 15px;
-    font-size: 24px;
-}
-
-.mm-site_mm_user-profile .mm-tab-handlers {
-    padding-bottom: 16px;
-}
-/* - User grades table (most of it extracted from MM1)
--------------------------------------------------------------------------- */
-.mm-grades-container {
-  padding-right: 2px;
-  background: white;
-}
-
-.mm-grades-table {
-  border-collapse: collapse;
-  line-height: 20px;
-  width: 100%;
-  font-size: 16px;
-  color: $item-stable-text;
-  tr {
-    border-bottom: 1px solid $item-light-border;
-  }
-  th,
-  td {
-    text-align: left;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 10px;
-    vertical-align: top;
-    white-space: normal;
-  }
-  thead th {
-    padding-left: 10px;
-    vertical-align: bottom;
-    font-weight: bold;
-  }
-  tbody th {
-    font-weight: normal;
-  }
-  .item {
-    display: table-cell;
-  }
-  th {
-    &.b1b {
-      padding-left: 20px;
-    }
-    &.item {
-      padding-left: 30px;
-    }
-    &.baggt {
-      padding-left: 30px;
-    }
-    img {
-      margin-left: -20px;
-      float: left;
-    }
-  }
-  .b1l {
-    width: 10px;
-    min-width: 10px;
-  }
-  .b1t,
-  .baggt {
-    font-weight: bold;
-  }
-  .itemcenter {
-    @extend .item;
-    padding: 10px;
-    white-space: normal;
-  }
-  .feedbacktext {
-    padding-left: 10px;
-    .no-overflow {
-      overflow: auto;
-    }
-  }
-  .dimmed_text,
-  .hidden,
-  .hidden a {
-    color: #aaa;
-  }
-  .oddd1,
-  .oddd3,
-  .evend3,
-  .levelodd {
-    background-color: $item-divider-bg;
-  }
-  .oddd2,
-  .evend2,
-  .oddd4,
-  .evend4 {
-    background-color: $item-stable-bg;
-  }
-  .leveleven {
-    background-color: $item-light-bg;
-  }
-  .column-leader {
-    border-left: 1px solid $item-light-border;
-    border-top: 1px solid $item-light-border;
-    border-bottom: 1px solid $item-light-border;
-    &.level1 {
-      border-left: 0;
-    }
-  }
-  .column-itemname {
-    border-right: 1px solid $item-light-border;
-    border-top: 1px solid $item-light-border;
-    border-bottom: 1px solid $item-light-border;
-  }
-}
-
-
-.mm-mm_login_sites {
-  .item-thumbnail-left .item-content {
-    padding-top: $item-padding;
-    padding-right: $item-padding;
-  }
-
-  .list-left-editing .item-thumbnail-left .item-content {
-    padding-right: (ceil( ($item-padding * 3) + ($item-padding / 3) ) - 5);
-  }
-
-  .avatar {
-    margin: 0;
-    width: 80px;
-    height: 80px;
-    max-width: 80px;
-    max-height: 80px;
-    border-radius : 50%;
-    padding: 4px;
-    border: 1px solid #ddd;
-    text-indent: -99999px;
-  }
-}
-
-.mm-login-sitepolicy-iframe {
-  height: 300px;
-}
-
-.mm-oauth-icon, .item.mm-oauth-icon {
-  padding: ($item-padding / 2);
-
-  > img, > span {
-    max-height: $item-icon-font-size;
-    max-width: $item-icon-font-size;
-    vertical-align: middle;
-  }
-  > span {
-    margin-left: 5px;
-    color: $gray-darker;
-  }
-}
-
-.mm-mm_login_credentials, .mm-mm_login_reconnect, .mm-mm_login_site {
-  .mm-ioninput-password {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  background: -webkit-radial-gradient(white, $gray-light);
-  background: radial-gradient(white, $gray-light);
-
-  img {
-    max-width: 100%;
-  }
-
-  img.moodle-logo {
-    width: 90%;
-    max-width: 300px;
-  }
-
-  .box {
-    padding: 16px;
-    background: $white;
-    border: 1px solid $item-default-border;
-  }
-
-  .mm-sitename, .mm-siteurl {
-    @if $mm-fixed-url { display: none; }
-  }
-}
-
 
 // Bar styles
 .bar-side-menu {
@@ -2857,6 +2846,20 @@ ion-side-menu li.item.item-divider {
   background-color: $bar-side-menu-item-divider-color;
 }
 
+.foreground-ion-edit.ion-edit:before {
+    position: relative;
+    left: 120px;
+    bottom: 15px;
+    font-size: 24px;
+}
+
+.mm-site_mm_user-profile .mm-tab-handlers {
+    padding-bottom: 16px;
+}
+
+.mm-site_coursesgrades .item .badge {
+  right: 16px;
+}
 .mm-site_frontpage {
     .mma-frontpage-item-container .item-media {
         min-height: 55px;
@@ -2883,9 +2886,6 @@ ion-side-menu li.item.item-divider {
             height: 22px;
         }
     }
-}
-.mm-site_coursesgrades .item .badge {
-  right: 16px;
 }
 $mma-messages-date-badge: "stable" !default;
 
